@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+    <script type="text/javascript" language="JavaScript" src="/liveupdate/media/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function(){alert("Hello world!");})
+{#        $(document).readyList(function() {alert("hello!gvukhbijn")})#}
+    </script>
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function(){
+            $("#update-holder").prepend('<div class="update"><div class="timestamp">2008-05-03 22:41:40</div><div class="text">Testing!</div><div class="clear"></div></div>');
+        })
+    </script>
     <meta charset="UTF-8">
     <title>Live Update</title>
     <style>
@@ -16,6 +26,7 @@
         div.text { float: left; padding-left: 10px;}
         div.clear { clear: both; height: 1px;}
     </style>
+
 </head>
 <body>
     <h1>Welcome to LIVE UPDATE</h1>
@@ -25,7 +36,7 @@
             {% for object in object_list %}
                 <div class="update {% cycle even, odd %}" id="{{ object.id }}">
                     <div class="timestamp">
-                        {{ object.timestapm |date: "Y-m-d H:i:s" }}
+                        {{ object.timestamp | date }}
                     </div>
                     <div class="text">
                         {{ object.text| linebreaksbr }}
