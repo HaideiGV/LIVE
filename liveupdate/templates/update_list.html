@@ -2,9 +2,9 @@
 <html>
 <head lang="en">
     <script type="text/javascript" language="JavaScript1.4" src="/scripts/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" language="JavaScript">
-        $(document).ready(function(){alert("Live update!");})
-    </script>
+{#    <script type="text/javascript" language="JavaScript">#}
+{#        $(document).ready(function(){alert("Live update!");})#}
+{#    </script>#}
     <script type="text/javascript" language="JavaScript">
         $(document).ready(function(){
             $("#update-holder").prepend('<div class="update">' +
@@ -12,6 +12,28 @@
                     '<div class="text">Testing!</div>' +
                     '<div class="clear"></div>' +
                     '</div>');
+        })
+    </script>
+    <script>
+        function update() {
+            update_holder = $("#update-holder");
+            most_recent = update_holder.find("div:first");
+            $.getJSON("/updates-after/"+most_recent.attr('id')+"/",
+                function(data){
+                    cycle_class = most_recent.hasClass("odd")
+                        ? "even": "odd";
+                    jQuery.each(data,function() {
+                                update_holder.prepend('<div id="' + this.pk
+                                        + '" class="update "' + cycle_class+
+                                        '"><div class="timestamp">'+
+                                        this.fields.timestamp+ '</div><div class="text">'+
+                                        this.fields.text+ '</div><div class="clear"></div></div>');
+                                cycle_class = (cycle_class=="odd") ? "even": "odd";
+                    });
+                }
+            );
+        }
+        $(document).ready(function() {setInterval("update()", 60000);
         })
     </script>
     <meta charset="UTF-8">
