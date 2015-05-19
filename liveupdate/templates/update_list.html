@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <script type="text/javascript" language="JavaScript1.4" src="/liveupdate/media/js/jquery-1.11.2.js"></script>
+    <script type="text/javascript" language="JavaScript1.4" src="/scripts/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" language="JavaScript">
-        $(document).ready(function(){alert("Hello world!");})
+        $(document).ready(function(){alert("Live update!");})
     </script>
-{#    <script type="text/javascript" language="JavaScript">#}
-{#        $(document).ready(function(){#}
-{#            $("#update-holder").prepend('<div class="update">' +#}
-{#                    '<div class="timestamp">2008-05-03 22:41:40</div>' +#}
-{#                    '<div class="text">Testing!</div>' +#}
-{#                    '<div class="clear"></div>' +#}
-{#                    '</div>');#}
-{#        })#}
-{#    </script>#}
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function(){
+            $("#update-holder").prepend('<div class="update">' +
+                    '<div class="timestamp">2008-05-03 22:41:40</div>' +
+                    '<div class="text">Testing!</div>' +
+                    '<div class="clear"></div>' +
+                    '</div>');
+        })
+    </script>
     <meta charset="UTF-8">
     <title>Live Update</title>
     <style>

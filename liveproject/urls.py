@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.conf.urls import *
 from liveupdate.models import Update
-from liveupdate.views import update
+from liveupdate.views import update,scripts
 
 
 urlpatterns = patterns(
@@ -11,4 +11,5 @@ urlpatterns = patterns(
     #url(r'^$', 'django.views.generic', {'queryset': Update.objects.all()}),
     url(r'^update/$', update),
     url(r'^admin/', include(admin.site.urls)),
+    (r'^scripts/([^/]+)$', scripts),
     )
