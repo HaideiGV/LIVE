@@ -5,15 +5,17 @@
 {#    <script type="text/javascript" language="JavaScript">#}
 {#        $(document).ready(function(){alert("Live update!");})#}
 {#    </script>#}
-    <script type="text/javascript" language="JavaScript">
-        $(document).ready(function(){
-            $("#update-holder").prepend('<div class="update">' +
-                    '<div class="timestamp">2008-05-03 22:41:40</div>' +
-                    '<div class="text">Testing!</div>' +
-                    '<div class="clear"></div>' +
-                    '</div>');
-        })
-    </script>
+{#    <script type="text/javascript" language="JavaScript">#}
+{#        $(document).ready(function(){#}
+{#            $("#update-holder").prepend(#}
+{#                    '<div class="update">' +#}
+{#                    '<div class="timestamp">2015-05-20</div>' +#}
+{#                    '<div class="text">Testing!</div>' +#}
+{#                    '<div class="clear"></div>' +#}
+{#                    '</div>'#}
+{#            );#}
+{#        })#}
+{#    </script>#}
     <script>
         function update() {
             update_holder = $("#update-holder");
@@ -57,7 +59,7 @@
     <h1>Welcome to LIVE UPDATE</h1>
     <p>This site is autorefresh!</p>
     {% if object_list %}
-        <div class="update-holder">
+        <div id="update-holder">
             {% for object in object_list %}
                 <div class="update {% cycle even, odd %}" id="{{ object.id }}">
                     <div class="timestamp">
