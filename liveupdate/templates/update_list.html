@@ -2,6 +2,7 @@
 <html>
 <head lang="en">
     <script type="text/javascript" language="JavaScript1.4" src="/scripts/jquery-1.11.3.min.js"></script>
+{#    Testing jquery#}
 {#    <script type="text/javascript" language="JavaScript">#}
 {#        $(document).ready(function(){alert("Live update!");})#}
 {#    </script>#}
@@ -44,36 +45,48 @@
         body {
             margin: 30px;
             font-family: sans-serif;
-            background: #fff;
+            background: goldenrod;
         }
-        h1 { background: #ccf; padding: 20px;}
+        h1 { background: chocolate; padding: 20px; text-align: center;}
         div.update { width: 100%; padding: 5px;}
-        div.even { background: #ddf }
+        div.even { background:chocolate; }
         div.timestamp { float: left; font-weight: bold;}
-        div.text { float: left; padding-left: 10px;}
+        div.text { float: left; padding-left: 10px; text-align: center;}
         div.clear { clear: both; height: 1px;}
     </style>
 
 </head>
 <body>
     <h1>Welcome to LIVE UPDATE</h1>
-    <p>This site is autorefresh!</p>
-    {% if object_list %}
-        <div id="update-holder">
-            {% for object in object_list %}
-                <div class="update {% cycle even, odd %}" id="{{ object.id }}">
-                    <div class="timestamp">
-                        {{ object.timestamp | date }}
+    <p style="text-align: center; "><strong>This site is autorefresh!</strong></p>
+    <table>
+        <tr>
+            <td style="width: 70%;">
+                {% if object_list %}
+                    <div id="update-holder">
+                    {% for object in object_list %}
+                    <div class="update {% cycle even, odd %}" id="{{ object.id }}">
+                        <div class="timestamp">
+                            {{ object.timestamp | date }}
+                        </div>
+                        <div class="text">
+                            {{ object.text| linebreaksbr }}
+                        </div>
+                        <div class="clear"></div>
                     </div>
-                    <div class="text">
-                        {{ object.text| linebreaksbr }}
+                {% endfor %}
                     </div>
-                    <div class="clear"></div>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <p>No updates!</p>
-    {% endif %}
+                {% else %}
+                    <p>No updates!</p>
+                {% endif %}
+        </td>
+            <td style="width: 30%;">
+                <textarea style="width: 500px; height: 100px; "></textarea>
+            </td><br>
+            <td>
+                <p>Banner</p>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
