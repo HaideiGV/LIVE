@@ -13,5 +13,6 @@ urlpatterns = patterns(
     url(r'^update/$', update),
     url(r'^admin/', include(admin.site.urls)),
     (r'^scripts/([^/]+)$', scripts),
-    (r'^updates-after/(?P<id>\d+)/$',liveupdate.views.updates_after),
+    #(r'^updates-after/(?P<id>\d+)/$',liveupdate.views.updates_after),
+    (r'^updates-after/(?P<id>\d+)/$',liveupdate.views.type_post),
     )

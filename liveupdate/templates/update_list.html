@@ -47,21 +47,26 @@
             font-family: sans-serif;
             background: goldenrod;
         }
-        h1 { background: chocolate; padding: 20px; text-align: center;}
-        div.update { width: 100%; padding: 5px;}
+        h1 { background: chocolate; padding: 40px; text-align: center;}
+        div.update {padding: 25px;}
         div.even { background:chocolate; }
         div.timestamp { float: left; font-weight: bold;}
-        div.text { float: left; padding-left: 10px; text-align: center;}
-        div.clear { clear: both; height: 1px;}
+        div.text { float: left; padding-left: 120px; text-align: center;}
+        div.clear { clear: both; height: 4px;}
     </style>
 
 </head>
 <body>
     <h1>Welcome to LIVE UPDATE</h1>
     <p style="text-align: center; "><strong>This site is autorefresh!</strong></p>
+    <form>
+        <label style="color: darkgreen;"><strong>type something interesting...</strong></label>
+        <input method="post" type="text" name="type_post" style="width: 100%; height: 100px;">
+        <input type="submit" name="post">
+    </form>
     <table>
         <tr>
-            <td style="width: 70%;">
+            <td>
                 {% if object_list %}
                     <div id="update-holder">
                     {% for object in object_list %}
@@ -79,12 +84,6 @@
                 {% else %}
                     <p>No updates!</p>
                 {% endif %}
-        </td>
-            <td style="width: 30%;">
-                <textarea style="width: 500px; height: 100px; "></textarea>
-            </td><br>
-            <td>
-                <p>Banner</p>
             </td>
         </tr>
     </table>
