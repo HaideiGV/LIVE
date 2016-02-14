@@ -1,22 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <script type="text/javascript" language="JavaScript1.4" src="/scripts/jquery-1.11.3.min.js"></script>
-{#    Testing jquery#}
-{#    <script type="text/javascript" language="JavaScript">#}
-{#        $(document).ready(function(){alert("Live update!");})#}
-{#    </script>#}
-{#    <script type="text/javascript" language="JavaScript">#}
-{#        $(document).ready(function(){#}
-{#            $("#update-holder").prepend(#}
-{#                    '<div class="update">' +#}
-{#                    '<div class="timestamp">2015-05-20</div>' +#}
-{#                    '<div class="text">Testing!</div>' +#}
-{#                    '<div class="clear"></div>' +#}
-{#                    '</div>'#}
-{#            );#}
-{#        })#}
-{#    </script>#}
+    <script type="text/javascript" language="javascript" src="/static/js/jquery-1.11.3.min.js"></script>
     <script>
         function update() {
             update_holder = $("#update-holder");
@@ -26,17 +11,16 @@
                     cycle_class = most_recent.hasClass("odd")
                         ? "even": "odd";
                     jQuery.each(data,function() {
-                                update_holder.prepend('<div id="' + this.pk
-                                        + '" class="update "' + cycle_class+
-                                        '"><div class="timestamp">'+
-                                        this.fields.timestamp+ '</div><div class="text">'+
-                                        this.fields.text+ '</div><div class="clear"></div></div>');
-                                cycle_class = (cycle_class=="odd") ? "even": "odd";
+                        update_holder.prepend(
+                                '<div id="'+this.pk+'" class="update "'+cycle_class+                                        '"><div class="timestamp">'+
+                                this.fields.timestamp+ '</div><div class="text">'+
+                                this.fields.text+ '</div><div class="clear"></div></div>');
+                        cycle_class = (cycle_class=="odd") ? "even": "odd";
                     });
                 }
             );
         }
-        $(document).ready(function() {setInterval("update()", 60000);
+        $(document).ready(function() {setInterval("update()", 5000);
         })
     </script>
     <meta charset="UTF-8">
@@ -45,11 +29,11 @@
         body {
             margin: 30px;
             font-family: sans-serif;
-            background: goldenrod;
+            background: darkgrey;
         }
-        h1 { background: chocolate; padding: 40px; text-align: center;}
+        h1 { background: darkgray; padding: 40px; text-align: center;}
         div.update {padding: 25px;}
-        div.even { background:chocolate; }
+        div.even { background:lightgrey; }
         div.timestamp { float: left; font-weight: bold;}
         div.text { float: left; padding-left: 120px; text-align: center;}
         div.clear { clear: both; height: 4px;}
@@ -59,11 +43,10 @@
 <body>
     <h1>Welcome to LIVE UPDATE</h1>
     <p style="text-align: center; "><strong>This site is autorefresh!</strong></p>
-    <form method="post" action="/update/">
-        <label style="color: darkgreen;"><strong>type something interesting...</strong></label>
-        <input type="text" name="q" style="width: 100%; height: 100px;">
-        <input type="submit" name="post">
-    </form>
+
+
+
+
     <table>
         <tr>
             <td>
