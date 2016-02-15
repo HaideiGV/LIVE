@@ -1,0 +1,9 @@
+{% extends "base.html "%}
+
+{% block new_post%}
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Share Post"/>
+    </form>
+{% endblock new_post %}

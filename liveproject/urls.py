@@ -3,6 +3,7 @@ from django.conf.urls import *
 from liveupdate.models import Update
 from liveupdate.views import update,scripts
 import liveupdate.views
+from liveupdate.views import allView
 
 
 urlpatterns = patterns(
@@ -11,5 +12,8 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     (r'^scripts/([^/]+)$', scripts),
     (r'^updates-after/(?P<id>\d+)/$', liveupdate.views.updates_after),
-    (r'^send_message/$', liveupdate.views.type_post),
+    # (r'^send-message/$', liveupdate.views.type_post),
+    (r'^detail/$', allView.as_view()),
+    (r'^send-form/$', liveupdate.views.all_type_input_form),
+    (r'^new-post/$', liveupdate.views.new_post),
     )
