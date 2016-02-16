@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from liveupdate.models import Update, ViewAllTypeFields
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core import serializers
 from django.views.generic import ListView
 import os
 from forms import AllFields, NewPost
 from datetime import datetime
+from django.contrib.auth import authenticate, login
 
 def update(request):
     object_list = Update.objects.all()
@@ -36,6 +37,21 @@ def new_post(request):
 class allView(ListView):
     model = ViewAllTypeFields
     template_name = 'detail_list.html'
+
+def login_page(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    print(username, password)
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return HttpResponseRedirect('/detail/')
+        else:
+            return HttpResponseRedirect('/login/')
+    else:
+        print("The username and password were incorrect.")
+    return render(request, "login_page.html")
 
 
 
