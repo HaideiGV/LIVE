@@ -49,6 +49,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
 
 ROOT_URLCONF = 'liveproject.urls'
@@ -75,22 +76,22 @@ WSGI_APPLICATION = 'liveproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'NAME': 'D:\GV\MATERIALS\ADVENTUREWORKS2012_DATA.MDF',
-        'ENGINE': 'sqlserver_ado',
-        'HOST': '127.0.0.1',
-        'USER': '',
-        'PASSWORD': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'NAME': 'D:\GV\MATERIALS\ADVENTUREWORKS2012_DATA.MDF',
+#         'ENGINE': 'sqlserver_ado',
+#         'HOST': '127.0.0.1',
+#         'USER': '',
+#         'PASSWORD': '',
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -114,3 +115,12 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
 
 MEDIA_ROOT = '/static/files/'
+
+
+ROLLBAR = {
+    'access_token': '9c97474ac8264da5bfac76bc73cf2930',
+    'environment': 'development' if DEBUG else 'production',
+    'root': BASE_DIR,
+}
+import rollbar
+rollbar.init(**ROLLBAR)
