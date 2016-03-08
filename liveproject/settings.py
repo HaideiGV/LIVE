@@ -49,7 +49,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    # 'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
 
 ROOT_URLCONF = 'liveproject.urls'
@@ -83,15 +83,6 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'NAME': 'D:\GV\MATERIALS\ADVENTUREWORKS2012_DATA.MDF',
-#         'ENGINE': 'sqlserver_ado',
-#         'HOST': '127.0.0.1',
-#         'USER': '',
-#         'PASSWORD': '',
-#     }
-# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -116,11 +107,11 @@ STATIC_ROOT = '/static/'
 
 MEDIA_ROOT = '/static/files/'
 
-
-ROLLBAR = {
-    'access_token': '9c97474ac8264da5bfac76bc73cf2930',
-    'environment': 'development' if DEBUG else 'production',
-    'root': BASE_DIR,
-}
-import rollbar
-rollbar.init(**ROLLBAR)
+#
+# ROLLBAR = {
+#     'access_token': '9c97474ac8264da5bfac76bc73cf2930',
+#     'environment': 'development' if DEBUG else 'production',
+#     'root': BASE_DIR,
+# }
+# import rollbar
+# rollbar.init(**ROLLBAR)

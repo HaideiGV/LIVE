@@ -39,9 +39,9 @@ class allView(ListView):
     template_name = 'detail_list.html'
 
 def login_page(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    print(username, password)
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    print("log/pass = ", username, password)
     user = authenticate(username=username, password=password)
     if user is not None:
         if user.is_active:
@@ -51,7 +51,7 @@ def login_page(request):
             return HttpResponseRedirect('/login/')
     else:
         print("The username and password were incorrect.")
-    return render(request, "login_page.html")
+        return render(request, "login_page.html")
 
 
 
