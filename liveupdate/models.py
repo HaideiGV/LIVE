@@ -54,4 +54,4 @@ class Links(models.Model):
         ordering = ['category']
 
     def __unicode__(self):
-        return str(self.category)+" "+str(self.linkUrl[50])
+        return str(self.category)+" "+str(self.linkUrl[:10])

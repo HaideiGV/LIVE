@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>Result = {{ res }}</p>
+    <p>Result = {{ resd }}</p>
+    <div class="row">
+        <div>
+            {% for link in links %}
+                <div class="col-md-4">
+                    <p>{{ link.category }}</p>
+                    <p>{{ link.link }}</p>
+                    <p>{{ link.description }}</p>
+                    <p>{{ link.rating }}</p>
+                    <hr/>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

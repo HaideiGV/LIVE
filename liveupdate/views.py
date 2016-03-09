@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from liveupdate.models import Update, ViewAllTypeFields
+from liveupdate.models import Update, ViewAllTypeFields, Links
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core import serializers
@@ -8,6 +8,7 @@ import os
 from forms import AllFields, NewPost
 from datetime import datetime
 from django.contrib.auth import authenticate, login
+from tasks import add
 
 def update(request):
     object_list = Update.objects.all()
@@ -52,6 +53,20 @@ def login_page(request):
     else:
         print("The username and password were incorrect.")
         return render(request, "login_page.html")
+
+
+def allLinksPage(request):
+    links = Links.objects.all()
+    res = add(1, 1)
+    resd = add.delay(2, 2)
+    return render(
+        request,
+        "allLinksPage.html",
+        {
+            'links': links,
+            'res': res,
+            'resd': resd
+        })
 
 
 
