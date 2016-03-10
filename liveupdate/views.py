@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from liveupdate.models import Update, ViewAllTypeFields, Links
+from liveupdate.models import Update, ViewAllTypeFields, Links, Category
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core import serializers
@@ -58,14 +58,12 @@ def login_page(request):
 def allLinksPage(request):
     links = Links.objects.all()
     res = add(1, 1)
-    resd = add.delay(2, 2)
     return render(
         request,
         "allLinksPage.html",
         {
             'links': links,
-            'res': res,
-            'resd': resd
+            'res': res
         })
 
 

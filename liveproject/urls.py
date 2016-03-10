@@ -15,6 +15,6 @@ urlpatterns = patterns(
     (r'^links/$', liveupdate.views.allLinksPage),
     (r'^all$', allView.as_view()),
     (r'^send-form/$', liveupdate.views.all_type_input_form),
-    (r'^new-post/$', liveupdate.views.new_post),
+    (r'^$', liveupdate.views.new_post),
     (r'^login/$', liveupdate.views.login_page),
     )

@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
+{% extends "base.html" %}
+
+
+{% block head %}
     <script type="text/javascript" language="javascript" src="/static/js/jquery-1.11.3.min.js"></script>
     <script>
         function update() {
@@ -39,8 +40,10 @@
         div.clear { clear: both; height: 4px;}
     </style>
 
-</head>
-<body>
+{% endblock head %}
+
+
+{% block content %}
     <h1>Welcome to LIVE UPDATE</h1>
     <p style="text-align: center; "><strong>This site is autorefresh!</strong></p>
 
@@ -72,5 +75,4 @@
             </td>
         </tr>
     </table>
-</body>
-</html>
+{% endblock content %}

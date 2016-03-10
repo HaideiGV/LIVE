@@ -2,7 +2,21 @@
 
 {% block content %}
     <p>Result = {{ res }}</p>
-    <!--<p>Result = {{ resd }}</p>-->
+    <div class="row">
+        <div class="col-md-12">
+            <form action="." method="get">
+                <input type="text" name="search" />
+                <select>
+                    {% for cat in links %}
+                        <option>{{ cat }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Apply" />
+                <hr/>
+            </form>
+
+        </div>
+    </div>
     <div class="row">
         <div>
             {% for link in links %}
