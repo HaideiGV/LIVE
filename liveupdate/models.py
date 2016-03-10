@@ -43,15 +43,23 @@ class ViewAllTypeFields(models.Model):
     def __unicode__(self):
         return str(self.text)
 
+class Category(models.Model):
+    category_name = models.CharField(max_length=200)
+    class Meta:
+        ordering = ['-id']
+
+    def __unicode__(self):
+        return str(self.category_name)
+
+
 
 class Links(models.Model):
-    category = models.CharField(max_length=200)
+    category_id = models.ForeignKey(Category)
     linkUrl = models.URLField(max_length=500)
     rating = models.IntegerField()
     description = models.CharField(max_length=500)
-
     class Meta:
-        ordering = ['category']
+        ordering = ['category_id']
 
     def __unicode__(self):
-        return str(self.category)+" "+str(self.linkUrl[:10])
+        return str(self.category)+" "+str(self.linkUrl[:20])
