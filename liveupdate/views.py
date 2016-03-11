@@ -56,15 +56,28 @@ def login_page(request):
 
 
 def allLinksPage(request):
-    links = Links.objects.all()
-    res = add(1, 1)
-    return render(
-        request,
-        "allLinksPage.html",
-        {
-            'links': links,
-            'res': res
-        })
+    if request.method == 'GET' and request.GET.get('search') != None and request.GET.get('search') != '':
+        category = Category.objects.all()
+        if request.GET.get('search') != None:
+            cat_id = Category.objects.get(category=request.GET.get('search'))
+            links_by_cat = Links.objects.filter(category=cat_id)
+        else:
+            links_by_cat = None
+        return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category})
+    elif request.method == 'GET' and request.GET.get('category') != None and request.GET.get('category') != '':
+        category = Category.objects.all()
+        cat_id = Category.objects.get(category=request.GET['category'])
+        links_by_cat = Links.objects.filter(category=cat_id)
+        return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category})
+    else:
+        links = Links.objects.all()
+        category = Category.objects.all()
+        res = add(1)
+        return render(request,"allLinksPage.html", {'links': links,'res': res,'category': category})
+
+def linkVote(request, id):
+    if request.method == 'POST' and request.GET.get('up'+id):
+        pass
 
 
 

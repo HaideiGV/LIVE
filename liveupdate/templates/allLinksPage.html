@@ -1,31 +1,46 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <p>Result = {{ res }}</p>
-    <div class="row">
+    <div>
+        <form id="ReviewRateForm" method="post" action="/review/post/rate/">
+
+        </form>
+    </div>
+    <p>Result celery tasks = {{ res }}</p>
+    <div class="row" style="text-align: center;">
         <div class="col-md-12">
             <form action="." method="get">
+                <label>Search category by keyword: </label>
                 <input type="text" name="search" />
-                <select>
-                    {% for cat in links %}
+                <input type="submit" value="Apply" />
+            </form>
+            <form action="." method="get">
+                <label>Chouse category from list: </label>
+                <select  name="category">
+                    {% for cat in category %}
                         <option>{{ cat }}</option>
                     {% endfor %}
                 </select>
                 <input type="submit" value="Apply" />
-                <hr/>
             </form>
-
         </div>
     </div>
-    <div class="row">
-        <div>
+    <div class="row" style="text-align: center;  padding-left: 30%;">
+        <div class="col-md-8">
             {% for link in links %}
-                <div class="col-md-4">
-                    <p>{{ link.linkUrl }}</p>
-                    <p>{{ link.description }}</p>
-                    <p>{{ link.rating }}</p>
-                    <hr/>
-                </div>
+                    <div style="background-color: #F0F0DA; width: 700px;">
+                        <p style="font-size: 18px; color: green;">
+                            <a href="{{ link.linkUrl }}" blank="true">{{ link.linkUrl }}</a>
+                        </p>
+                        <p style="font-size: 16px; font-family:Arial; font-style: italic;">{{ link.description }}</p>
+                        <p>
+                            <form method="post" action=".">
+                                <input type="button" value="+1" id="radio+1" type="button" name="up{{link.id}}" />
+                                <input type="button" value="-1" id="radio-1" type="button" name="down{{link.id}}" />
+                                <span style="font-size: 17px; color: #8D5C6C;">Rate: {{ link.rating }}</span>
+                            </form>
+                        </p>
+                    </div>
             {% endfor %}
         </div>
     </div>
