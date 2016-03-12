@@ -4,7 +4,6 @@
     <list default="true" id="85edeef1-5ad2-43b5-86e3-02965cbe9718" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <ignored path="liveproject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.035564855">
-              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="28" />
+              <caret line="1" column="54" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -565,7 +564,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457786003586</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add gunicorn">
+      <created>1457786904199</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1457786904199</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -611,7 +616,8 @@
     <MESSAGE value="add Category model" />
     <MESSAGE value="fix some visual bugs, add vouting buttons" />
     <MESSAGE value="add collectstatic command" />
-    <option name="LAST_COMMIT_MESSAGE" value="add collectstatic command" />
+    <MESSAGE value="add gunicorn" />
+    <option name="LAST_COMMIT_MESSAGE" value="add gunicorn" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1039,7 +1045,7 @@
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.035564855">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="28" />
+          <caret line="1" column="54" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
           <folding />
         </state>
       </provider>
