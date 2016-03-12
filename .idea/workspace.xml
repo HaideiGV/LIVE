@@ -97,8 +97,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6987448">
-              <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.66317993">
+              <caret line="106" column="52" selection-start-line="106" selection-start-column="52" selection-end-line="106" selection-end-column="52" />
               <folding>
                 <element signature="e#384#393#0" expanded="true" />
               </folding>
@@ -584,7 +584,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457787345391</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="del celery tasks">
+      <created>1457787594344</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1457787594344</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1069,8 +1075,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6987448">
-          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.66317993">
+          <caret line="106" column="52" selection-start-line="106" selection-start-column="52" selection-end-line="106" selection-end-column="52" />
           <folding>
             <element signature="e#384#393#0" expanded="true" />
           </folding>

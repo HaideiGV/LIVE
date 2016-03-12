@@ -104,7 +104,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'liveupdate',
-        'HOST': 'localhost',
+        'HOST': 'glacial-bastion-94113.herokuapp.com',
         'PORT': '5432',
     }
 }
