@@ -107,7 +107,7 @@ DATABASES = {
         'USER': 'jtjmzihicddigb',
         'PASSWORD':'Q2XfgklhLmKVJSZkm3yxtQZWN7',
         'HOST': 'ec2-54-235-153-179.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'PORT': '',
     }
 }
 

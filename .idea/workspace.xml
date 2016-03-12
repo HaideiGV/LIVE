@@ -97,8 +97,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.66317993">
-              <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.76987445">
+              <caret line="109" column="17" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
               <folding>
                 <element signature="e#384#393#0" expanded="true" />
               </folding>
@@ -608,7 +608,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457788311378</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="postgres bugs">
+      <created>1457788464932</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1457788464932</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -656,7 +662,8 @@
     <MESSAGE value="add collectstatic command" />
     <MESSAGE value="add gunicorn" />
     <MESSAGE value="del celery tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="del celery tasks" />
+    <MESSAGE value="postgres bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="postgres bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1093,8 +1100,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66317993">
-          <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.76987445">
+          <caret line="109" column="17" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
           <folding>
             <element signature="e#384#393#0" expanded="true" />
           </folding>
