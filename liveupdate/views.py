@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.core import serializers
 from django.views.generic import ListView
 import os
-from forms import AllFields, NewPost
+from forms import AllFields, NewLink
 from datetime import datetime
 from django.contrib.auth import authenticate, login
 from tasks import add
@@ -28,16 +28,25 @@ def all_type_input_form(request):
     form = AllFields()
     return render(request, 'message.html', {'form':form})
 
-def new_post(request):
-    form = NewPost(request.POST or None)
+
+def new_link(request):
+    form = NewLink(request.POST or None)
     if form.is_valid():
-        p = Update(text=form['text'].value(), timestamp=datetime.now())
-        p.save()
-    return render(request, 'new_post.html', {'form': form})
+        if Links.objects.filter(request.POST['linkUrl']) == None:
+            p = Links(
+                category=Category.objects.get(id=int(request.POST['category'])),
+                linkUrl=request.POST['linkUrl'],
+                description=request.POST['description']
+            )
+            p.save()
+    # print(Links.objects.get(linkUrl=request.POST['linkUrl']))
+    return render(request, 'new_link.html', {'form': form})
+
 
 class allView(ListView):
     model = ViewAllTypeFields
     template_name = 'detail_list.html'
+
 
 def login_page(request):
     username = request.POST.get('username')

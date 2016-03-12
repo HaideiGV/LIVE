@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from ratings.handlers import ratings
 
 # Create your models here.
 class Update(models.Model):
@@ -56,11 +57,13 @@ class Category(models.Model):
 
 class Links(models.Model):
     category = models.ForeignKey(Category, related_name='+')
-    linkUrl = models.URLField(max_length=500)
-    rating = models.IntegerField()
+    linkUrl = models.URLField(max_length=500, unique=True)
+    rating = models.IntegerField(default=0)
     description = models.CharField(max_length=500)
     class Meta:
         ordering = ['category']
 
     def __unicode__(self):
         return str(self.category)
+
+ratings.register(Links, score_range=(1, 100), score_step=1, can_delete_vote=True)

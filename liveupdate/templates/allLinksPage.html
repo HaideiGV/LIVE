@@ -1,11 +1,18 @@
 {% extends "base.html" %}
-
+{#{% load ratings_tags %}#}
 {% block content %}
-    <div>
-        <form id="ReviewRateForm" method="post" action="/review/post/rate/">
 
-        </form>
-    </div>
+
+
+{#    {% get_rating_form for links as rating_form %}#}
+{##}
+{#    <form action="{% url ratings_vote %}" method="post">#}
+{#        {% csrf_token %}#}
+{#        {{ rating_form }}#}
+{#        <p><input type="submit" value="Vote &rarr;"></p>#}
+{#    </form>#}
+
+
     <p>Result celery tasks = {{ res }}</p>
     <div class="row" style="text-align: center;">
         <div class="col-md-12">
@@ -30,7 +37,7 @@
             {% for link in links %}
                     <div style="background-color: #F0F0DA; width: 700px;">
                         <p style="font-size: 18px; color: green;">
-                            <a href="{{ link.linkUrl }}" blank="true">{{ link.linkUrl }}</a>
+                            <a href="{{ link.linkUrl }}" >{{ link.linkUrl }}</a>
                         </p>
                         <p style="font-size: 16px; font-family:Arial; font-style: italic;">{{ link.description }}</p>
                         <p>

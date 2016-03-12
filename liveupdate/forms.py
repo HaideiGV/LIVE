@@ -1,5 +1,6 @@
-from django.forms import ModelForm
-from models import ViewAllTypeFields, Update
+from django.forms import ModelForm, forms
+from models import ViewAllTypeFields, Update, Links, Category
+from django import forms
 
 class AllFields(ModelForm):
     class Meta:
@@ -7,7 +8,7 @@ class AllFields(ModelForm):
         exclude = ['aggregate_field']
 
 
-class NewPost(ModelForm):
-    class Meta:
-        model = Update
-        fields = ['text']
+class NewLink(forms.Form):
+    category = forms.ModelChoiceField(queryset=Category.objects.all())
+    linkUrl = forms.CharField(max_length=200)
+    description = forms.CharField(max_length=500)

@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import djcelery
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
+
 djcelery.setup_loader()
 BROKER_URL = 'django://'
 
@@ -43,6 +46,7 @@ INSTALLED_APPS = (
     'liveupdate',
     'djcelery',
     'kombu.transport.django',
+    'ratings',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,25 +79,29 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATE_CONTEXT_PROCESSORS += (
+     'django.core.context_processors.request',
+)
+
 WSGI_APPLICATION = 'liveproject.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'liveupdate',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'liveupdate',
+    }
+}
 
 
 # Internationalization
