@@ -28,7 +28,7 @@ SECRET_KEY = 'z1#6litaz4a3p0=*q#vxa$4rch-e@mh01f_*tcko8x+mdc6!)$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['glacial-bastion-94113.herokuapp.com', 'localhost', '*', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition

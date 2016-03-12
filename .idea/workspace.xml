@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85edeef1-5ad2-43b5-86e3-02965cbe9718" name="Default" comment="">
+    <list default="true" id="85edeef1-5ad2-43b5-86e3-02965cbe9718" name="Default" comment="add collectstatic command">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveproject/settings.py" afterPath="$PROJECT_DIR$/liveproject/settings.py" />
     </list>
     <ignored path="liveproject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.035564855">
+            <state vertical-scroll-proportion="0.0">
               <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
               <folding />
             </state>
@@ -82,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.6289308">
+              <caret line="30" column="95" selection-start-line="30" selection-start-column="95" selection-end-line="30" selection-end-column="95" />
               <folding>
                 <element signature="e#384#393#0" expanded="true" />
               </folding>
@@ -144,12 +144,12 @@
         <option value="$PROJECT_DIR$/liveupdate/static/css/starter-template.css" />
         <option value="$PROJECT_DIR$/liveupdate/templates/base.html" />
         <option value="$PROJECT_DIR$/liveupdate/tasks.py" />
-        <option value="$PROJECT_DIR$/liveproject/settings.py" />
         <option value="$PROJECT_DIR$/liveupdate/views.py" />
         <option value="$PROJECT_DIR$/liveupdate/templates/allLinksPage.html" />
         <option value="$PROJECT_DIR$/Procfile.txt" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/liveproject/settings.py" />
       </list>
     </option>
   </component>
@@ -556,7 +556,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457785176414</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add collectstatic command">
+      <created>1457785421926</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1457785421926</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -566,9 +572,9 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24968314" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32802126" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802126" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -982,16 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-          <folding>
-            <element signature="e#384#393#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/liveupdate/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1029,9 +1025,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.035564855">
+        <state vertical-scroll-proportion="0.0">
           <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6289308">
+          <caret line="30" column="95" selection-start-line="30" selection-start-column="95" selection-end-line="30" selection-end-column="95" />
+          <folding>
+            <element signature="e#384#393#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
