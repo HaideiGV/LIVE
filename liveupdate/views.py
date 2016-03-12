@@ -79,7 +79,7 @@ def allLinksPage(request):
     else:
         links = Links.objects.all()
         category = Category.objects.all()
-        return render(request,"allLinksPage.html", {'links': links,'res': res,'category': category})
+        return render(request,"allLinksPage.html", {'links': links,'category': category})
 
 def linkVote(request, id):
     if request.method == 'POST' and request.GET.get('up'+id):
