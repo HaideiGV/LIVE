@@ -6,9 +6,7 @@ from django.core import serializers
 from django.views.generic import ListView
 import os
 from forms import AllFields, NewLink
-from datetime import datetime
 from django.contrib.auth import authenticate, login
-from tasks import add
 
 def update(request):
     object_list = Update.objects.all()
@@ -81,7 +79,6 @@ def allLinksPage(request):
     else:
         links = Links.objects.all()
         category = Category.objects.all()
-        res = add(1)
         return render(request,"allLinksPage.html", {'links': links,'res': res,'category': category})
 
 def linkVote(request, id):

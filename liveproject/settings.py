@@ -12,12 +12,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import djcelery
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 
-djcelery.setup_loader()
-BROKER_URL = 'django://'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -44,9 +41,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'liveupdate',
-    'djcelery',
     'kombu.transport.django',
     'ratings',
+    'opbeat.contrib.django',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,8 +55,15 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
     # 'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
+
+OPBEAT = {
+    'ORGANIZATION_ID': '419beab043604b6da4360b71acfe5813',
+    'APP_ID': '83626ae470',
+    'SECRET_TOKEN': '0671c09a0ee5f47c463ca793bae2e32f3ee48869',
+}
 
 ROOT_URLCONF = 'liveproject.urls'
 
@@ -88,7 +92,7 @@ WSGI_APPLICATION = 'liveproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
+#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
