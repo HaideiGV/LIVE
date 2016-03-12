@@ -103,8 +103,10 @@ WSGI_APPLICATION = 'liveproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'liveupdate',
-        'HOST': 'glacial-bastion-94113.herokuapp.com',
+        'NAME': 'd12sa18ng59qbd',
+        'USERNAME': 'jtjmzihicddigb',
+        'PASSWORD':'Q2XfgklhLmKVJSZkm3yxtQZWN7',
+        'HOST': 'ec2-54-235-153-179.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
