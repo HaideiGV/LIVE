@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85edeef1-5ad2-43b5-86e3-02965cbe9718" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/requariments.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/liveupdate/tasks.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/liveproject.iml" afterPath="$PROJECT_DIR$/.idea/liveproject.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveproject/settings.py" afterPath="$PROJECT_DIR$/liveproject/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/templates/allLinksPage.html" afterPath="$PROJECT_DIR$/liveupdate/templates/allLinksPage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/views.py" afterPath="$PROJECT_DIR$/liveupdate/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Procfile.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="liveproject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,15 +49,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="allLinksPage.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="allLinksPage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/liveupdate/templates/allLinksPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3404864">
+            <state vertical-scroll-proportion="-9.153846">
               <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Procfile.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Procfile.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -135,6 +138,7 @@
         <option value="$PROJECT_DIR$/liveproject/settings.py" />
         <option value="$PROJECT_DIR$/liveupdate/views.py" />
         <option value="$PROJECT_DIR$/liveupdate/templates/allLinksPage.html" />
+        <option value="$PROJECT_DIR$/Procfile.txt" />
       </list>
     </option>
   </component>
@@ -990,12 +994,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/liveupdate/templates/allLinksPage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3404864">
+        <state vertical-scroll-proportion="-9.153846">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
