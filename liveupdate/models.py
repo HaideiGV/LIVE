@@ -1,6 +1,5 @@
 from django.db import models
-from django.contrib import admin
-from ratings.handlers import ratings
+
 
 # Create your models here.
 class Update(models.Model):
@@ -65,5 +64,3 @@ class Links(models.Model):
 
     def __unicode__(self):
         return str(self.category)
-
-ratings.register(Links, score_range=(1, 100), score_step=1, can_delete_vote=True)

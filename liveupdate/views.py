@@ -81,10 +81,26 @@ def allLinksPage(request):
         category = Category.objects.all()
         return render(request,"allLinksPage.html", {'links': links,'category': category})
 
-def linkVote(request, id):
-    if request.method == 'POST' and request.GET.get('up'+id):
-        pass
+
+def updateRate(request):
+    if request.method == 'POST':
+        if 'rateValue' in request.POST:
+            rateValue = request.POST.get('rateValue')
+            print(rateValue)
+            if request.POST.get('up'):
+                print(rateValue)
+                return HttpResponse('up')
+            elif request.POST.get('down'):
+                print(rateValue)
+                return HttpResponse('down')
+    return HttpResponse('Error')
 
 
+def ajax_update(request):
+    if request.is_ajax():
+        print(request.is_ajax())
+        request_data = request.POST
+        print(request_data)
+        return HttpResponse("OK")
 
 

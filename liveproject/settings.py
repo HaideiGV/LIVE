@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'liveupdate',
     'kombu.transport.django',
-    'ratings',
     'opbeat.contrib.django',
 )
 
@@ -99,15 +98,24 @@ WSGI_APPLICATION = 'liveproject.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+#
+# #heroku configs
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd12sa18ng59qbd',
+#         'USER': 'jtjmzihicddigb',
+#         'PASSWORD':'Q2XfgklhLmKVJSZkm3yxtQZWN7',
+#         'HOST': 'ec2-54-235-153-179.compute-1.amazonaws.com',
+#         'PORT': '',
+#     }
+# }
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd12sa18ng59qbd',
-        'USER': 'jtjmzihicddigb',
-        'PASSWORD':'Q2XfgklhLmKVJSZkm3yxtQZWN7',
-        'HOST': 'ec2-54-235-153-179.compute-1.amazonaws.com',
-        'PORT': '',
+        'NAME': 'liveupdate',
     }
 }
 

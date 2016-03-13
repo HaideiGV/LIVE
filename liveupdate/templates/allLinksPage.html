@@ -1,16 +1,24 @@
 {% extends "base.html" %}
-{#{% load ratings_tags %}#}
+
+{% block head %}
+{#    <script>#}
+{#    $(document).ready(function() {#}
+{#    $.ajax({#}
+{#        method: 'POST',#}
+{#        url: '/links/',#}
+{#        data: {'yourJavaScriptArrayKey': yourJavaScriptArray},#}
+{#        success: function (data) {#}
+{#             alert("it worked!");#}
+{#        },#}
+{#        error: function (data) {#}
+{#             alert("it didnt work");#}
+{#        }#}
+{#    });#}
+{#});#}
+{#    </script>#}
+{% endblock head %}
+
 {% block content %}
-
-
-
-{#    {% get_rating_form for links as rating_form %}#}
-{##}
-{#    <form action="{% url ratings_vote %}" method="post">#}
-{#        {% csrf_token %}#}
-{#        {{ rating_form }}#}
-{#        <p><input type="submit" value="Vote &rarr;"></p>#}
-{#    </form>#}
 
 
     <div class="row" style="text-align: center;">
@@ -41,8 +49,8 @@
                         <p style="font-size: 16px; font-family:Arial; font-style: italic;">{{ link.description }}</p>
                         <p>
                             <form method="post" action=".">
-                                <input type="button" value="+1" id="radio+1" type="button" name="up{{link.id}}" />
-                                <input type="button" value="-1" id="radio-1" type="button" name="down{{link.id}}" />
+                                <input type="button" value="+1" class="radioup" type="button" name="up" />
+                                <input type="button" value="-1" class="radiodown" type="button" name="down" />
                                 <span style="font-size: 17px; color: #8D5C6C;">Rate: {{ link.rating }}</span>
                             </form>
                         </p>
