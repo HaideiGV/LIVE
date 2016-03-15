@@ -29,8 +29,14 @@
 
         <div class="col-sm-3 col-sm-offset-0 blog-sidebar">
             <form action="." method="get">
-                <label>Search category by keyword: </label>
-                <input type="text" name="search" />
+                {% if not error%}
+                    <label>Search category by keyword: </label>
+                    <input type="text" name="search" />
+                {% else %}
+                    {% for e in error %}
+                        <p style="color:red;"><strong>{{ e }}</strong></p>
+                    {% endfor %}
+                {% endif %}
                 <input type="submit" value="Search" />
             </form>
         <br/>
@@ -50,7 +56,7 @@
 
         <div class="col-sm-6 blog-main">
             {% for link in links %}
-                    <div style="background-color: #F0F0DA; text-align: center;">
+                    <div style="background-color: #ebebe0; text-align: center; border: 2px dashed black;">
                         <p style="font-size: 16px; color: green;">
                             <a href="{{ link.linkUrl }}" target="_blank">{{ link.linkUrl }}</a>
                         </p>
@@ -63,6 +69,7 @@
                             </form>
                         </p>
                     </div>
+                    <br/>
             {% endfor %}
         </div>
     <div class="col-sm-3 col-sm-offset-0 blog-sidebar" style="font-size: 16px;">
@@ -70,10 +77,14 @@
     <a href="http://freevjachlink.com" target="_blank">
         <img data-holder-rendered="true" src="/static/images/link.png" style="width: 200px; height: 200px;" class="img-thumbnail">
     </a>
+        <br/>
+        <a href="http://freevjachlink.com" target="_blank">
+        <img data-holder-rendered="true" src="/static/images/link.png" style="width: 200px; height: 200px;" class="img-thumbnail">
+    </a>
         <p style="font-size: 24px;"><strong>Partners</strong></p>
-        <p><a href="http://microsoft.com" style="color: gold;">Microsoft</a></p>
-        <p><a href="http://python.org" style="color: gold;">Python</a></p>
-        <p><a href="http://wiki.org" style="color: gold;">Wikipedia</a></p>
+        <p><a href="http://microsoft.com" style="color: black;">Microsoft</a></p>
+        <p><a href="http://python.org" style="color: black;">Python</a></p>
+        <p><a href="http://wiki.org" style="color: black;">Wikipedia</a></p>
     </div>
 
 

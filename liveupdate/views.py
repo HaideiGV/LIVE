@@ -8,14 +8,11 @@ import os
 from forms import AllFields, NewLink
 from django.contrib.auth import authenticate, login
 from urlparse import urlparse
+from django.contrib import messages
 
 def update(request):
     object_list = Update.objects.all()
     return render_to_response('update_list.html', {'object_list': object_list})
-
-def scripts(request, name):
-    data = open(os.path.join('static/js',name), 'rb').read()
-    return HttpResponse(data)
 
 def updates_after(request, id):
     response = HttpResponse()
@@ -64,17 +61,22 @@ def login_page(request):
 
 
 def allLinksPage(request):
+    error = []
     category = Category.objects.all()
+    links = Links.objects.all()
     if request.GET.get('search') != None or '':
-        cat_id = Category.objects.get(category=request.GET.get('search'))
-        links_by_cat = Links.objects.filter(category=cat_id)
-        return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category})
+        try:
+            cat_id = Category.objects.get(category=request.GET.get('search').lower())
+            links_by_cat = Links.objects.filter(category=cat_id)
+        except:
+            error.append("We have not such category. Please try again or send me a letter for add new category.")
+            links_by_cat = Links.objects.all()
+        return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category, 'error': error})
     elif request.GET.get('category') != None or '':
         cat_id = Category.objects.get(category=request.GET['category'])
         links_by_cat = Links.objects.filter(category=cat_id)
         return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category})
     else:
-        links = Links.objects.all()
         return render(request,"allLinksPage.html", {'links': links,'category': category})
 
 
@@ -98,5 +100,8 @@ def ajax_update(request):
         request_data = request.POST
         print(request_data)
         return HttpResponse("OK")
+
+def about(request):
+    return render(request, "about.html")
 
 
