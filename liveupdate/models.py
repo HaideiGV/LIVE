@@ -55,12 +55,12 @@ class Category(models.Model):
 
 
 class Links(models.Model):
-    category = models.ForeignKey(Category, related_name='+')
+    category = models.ForeignKey(Category)
     linkUrl = models.URLField(max_length=500, unique=True)
     rating = models.IntegerField(default=0)
     description = models.CharField(max_length=500)
     class Meta:
-        ordering = ['category']
+        ordering = ['linkUrl']
 
     def __unicode__(self):
-        return str(self.category)
+        return str(self.linkUrl)

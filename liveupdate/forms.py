@@ -5,10 +5,10 @@ from django import forms
 class AllFields(ModelForm):
     class Meta:
         model = ViewAllTypeFields
-        exclude = ['aggregate_field']
+        fields = ['char_field', 'email_field', 'url_field', 'text']
 
 
-class NewLink(forms.Form):
-    category = forms.ModelChoiceField(queryset=Category.objects.all())
-    linkUrl = forms.CharField(max_length=200)
-    description = forms.CharField(max_length=500)
+class NewLink(ModelForm):
+    class Meta:
+        model = Links
+        fields = ['category', 'linkUrl', 'description']

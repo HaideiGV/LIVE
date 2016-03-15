@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    <form action="." method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Send"/>
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    <h3 style="text-align: center;">
+        <strong>If you want tell me somthing or want to add new category, please, fill the form and send me.</strong>
+    </h3>
+    <br/>
+    <div class="col-sm-4 blog-main">
+    </div>
+    <div class="col-sm-6 blog-main">
+        <form action="." method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Send"/>
+        </form>
+    </div>
+{% endblock content %}

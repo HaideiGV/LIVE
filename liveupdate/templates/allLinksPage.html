@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block head %}
+    <div style="background-color: black;">
+        <h3 style="text-align: center; padding-top: 5%; color: gold;">
+            <span>At this site you can find interesting links.
+                It let you out from googling long time</span>
+        </h3>
+    </div>
 {#    <script>#}
 {#    $(document).ready(function() {#}
 {#    $.ajax({#}
@@ -21,41 +27,54 @@
 {% block content %}
 
 
-    <div class="row" style="text-align: center;">
-        <div class="col-md-12">
+        <div class="col-sm-3 col-sm-offset-0 blog-sidebar">
             <form action="." method="get">
                 <label>Search category by keyword: </label>
                 <input type="text" name="search" />
-                <input type="submit" value="Apply" />
+                <input type="submit" value="Search" />
             </form>
+        <br/>
+        <br/>
+        <br/>
             <form action="." method="get">
-                <label>Chouse category from list: </label>
+                <label>Search category by list: </label>
+                <br/>
                 <select  name="category">
                     {% for cat in category %}
-                        <option>{{ cat }}</option>
+                        <option name="cat_val">{{ cat }}</option>
                     {% endfor %}
                 </select>
-                <input type="submit" value="Apply" />
+                <input type="submit" value="Search" />
             </form>
         </div>
-    </div>
-    <div class="row" style="text-align: center;  padding-left: 30%;">
-        <div class="col-md-8">
+
+        <div class="col-sm-6 blog-main">
             {% for link in links %}
-                    <div style="background-color: #F0F0DA; width: 700px;">
-                        <p style="font-size: 18px; color: green;">
-                            <a href="{{ link.linkUrl }}" >{{ link.linkUrl }}</a>
+                    <div style="background-color: #F0F0DA; text-align: center;">
+                        <p style="font-size: 16px; color: green;">
+                            <a href="{{ link.linkUrl }}" target="_blank">{{ link.linkUrl }}</a>
                         </p>
-                        <p style="font-size: 16px; font-family:Arial; font-style: italic;">{{ link.description }}</p>
+                        <p style="font-size: 14px; font-style: italic;">{{ link.description }}</p>
                         <p>
                             <form method="post" action=".">
                                 <input type="button" value="+1" class="radioup" type="button" name="up" />
                                 <input type="button" value="-1" class="radiodown" type="button" name="down" />
-                                <span style="font-size: 17px; color: #8D5C6C;">Rate: {{ link.rating }}</span>
+                                <span style="font-size: 14px; color: #8D5C6C;">Rate: {{ link.rating }}</span>
                             </form>
                         </p>
                     </div>
             {% endfor %}
         </div>
+    <div class="col-sm-3 col-sm-offset-0 blog-sidebar" style="font-size: 16px;">
+    <p style="font-size: 24px;"><strong>Banners</strong></p>
+    <a href="http://freevjachlink.com" target="_blank">
+        <img data-holder-rendered="true" src="/static/images/link.png" style="width: 200px; height: 200px;" class="img-thumbnail">
+    </a>
+        <p style="font-size: 24px;"><strong>Partners</strong></p>
+        <p><a href="http://microsoft.com" style="color: gold;">Microsoft</a></p>
+        <p><a href="http://python.org" style="color: gold;">Python</a></p>
+        <p><a href="http://wiki.org" style="color: gold;">Wikipedia</a></p>
     </div>
+
+
 {% endblock content %}

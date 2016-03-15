@@ -24,13 +24,13 @@ class Migration(migrations.Migration):
             name='Links',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('linkUrl', models.URLField(max_length=500)),
-                ('rating', models.IntegerField()),
+                ('linkUrl', models.URLField(unique=True, max_length=500)),
+                ('rating', models.IntegerField(default=0)),
                 ('description', models.CharField(max_length=500)),
-                ('category', models.ForeignKey(related_name='+', to='liveupdate.Category')),
+                ('category', models.ForeignKey(to='liveupdate.Category')),
             ],
             options={
-                'ordering': ['category'],
+                'ordering': ['linkUrl'],
             },
         ),
         migrations.CreateModel(

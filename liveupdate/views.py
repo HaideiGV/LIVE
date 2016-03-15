@@ -7,6 +7,7 @@ from django.views.generic import ListView
 import os
 from forms import AllFields, NewLink
 from django.contrib.auth import authenticate, login
+from urlparse import urlparse
 
 def update(request):
     object_list = Update.objects.all()
@@ -29,15 +30,15 @@ def all_type_input_form(request):
 
 def new_link(request):
     form = NewLink(request.POST or None)
+    # print(str(Category.objects.get(category=request.POST['category']).id))
     if form.is_valid():
-        if Links.objects.filter(request.POST['linkUrl']) == None:
-            p = Links(
-                category=Category.objects.get(id=int(request.POST['category'])),
-                linkUrl=request.POST['linkUrl'],
-                description=request.POST['description']
-            )
-            p.save()
-    # print(Links.objects.get(linkUrl=request.POST['linkUrl']))
+        p = Links(
+            category=Category.objects.get(pk=request.POST.get('category')),
+            linkUrl='http://'+urlparse(request.POST['linkUrl']).hostname,
+            rating=0,
+            description=request.POST['description']
+        )
+        p.save()
     return render(request, 'new_link.html', {'form': form})
 
 
@@ -63,22 +64,17 @@ def login_page(request):
 
 
 def allLinksPage(request):
-    if request.method == 'GET' and request.GET.get('search') != None and request.GET.get('search') != '':
-        category = Category.objects.all()
-        if request.GET.get('search') != None:
-            cat_id = Category.objects.get(category=request.GET.get('search'))
-            links_by_cat = Links.objects.filter(category=cat_id)
-        else:
-            links_by_cat = None
+    category = Category.objects.all()
+    if request.GET.get('search') != None or '':
+        cat_id = Category.objects.get(category=request.GET.get('search'))
+        links_by_cat = Links.objects.filter(category=cat_id)
         return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category})
-    elif request.method == 'GET' and request.GET.get('category') != None and request.GET.get('category') != '':
-        category = Category.objects.all()
+    elif request.GET.get('category') != None or '':
         cat_id = Category.objects.get(category=request.GET['category'])
         links_by_cat = Links.objects.filter(category=cat_id)
         return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category})
     else:
         links = Links.objects.all()
-        category = Category.objects.all()
         return render(request,"allLinksPage.html", {'links': links,'category': category})
 
 
