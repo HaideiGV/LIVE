@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from liveupdate.models import Update, ViewAllTypeFields, Links, Category
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, RequestContext
 from django.core import serializers
 from django.views.generic import ListView
 import os
@@ -105,3 +105,20 @@ def about(request):
     return render(request, "about.html")
 
 
+def likes(request):
+    context = RequestContext(request)
+    rate = None
+    rate = request.GET['rate']
+    print(rate)
+    if request.method == 'GET':
+        rate = request.GET['rate']
+        print(rate)
+    like = 0
+    if rate:
+        rate = Links.objects.get(rating=int(rate))
+        if rate:
+            like = rate.rating + 1
+            rate.rating = like
+            rate.save()
+
+    return HttpResponse(like)

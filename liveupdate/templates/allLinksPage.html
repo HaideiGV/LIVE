@@ -7,23 +7,31 @@
                 It let you out from googling long time</span>
         </h3>
     </div>
-{#    <script>#}
-{#    $(document).ready(function() {#}
-{#    $.ajax({#}
-{#        method: 'POST',#}
-{#        url: '/links/',#}
-{#        data: {'yourJavaScriptArrayKey': yourJavaScriptArray},#}
-{#        success: function (data) {#}
-{#             alert("it worked!");#}
-{#        },#}
-{#        error: function (data) {#}
-{#             alert("it didnt work");#}
-{#        }#}
-{#    });#}
-{#});#}
-{#    </script>#}
+    <!--<script>-->
+          <!--$('#like').click(function(){-->
+            <!--var catid;-->
+            <!--catid = $(this).attr("data-catid");-->
+            <!--$.get('/like/', {rate_id: catid},-->
+                <!--function(data){-->
+                    <!--$('#like_count').html(data);-->
+                    <!--$('#like').hide();-->
+            <!--});-->
+          <!--});-->
+    <!--</script>-->
 {% endblock head %}
-
+    <script type="text/javascript">
+          $('#like').click(function(){
+            var rate;
+            rate = $(this).attr("data-rate");
+            $.ajax(
+                '/like/',
+                {rate: rate},
+                function(data){
+                    $('#like_count').html(data);
+                    $('#like').hide();
+                });
+          });
+    </script>
 {% block content %}
 
 
@@ -62,10 +70,12 @@
                         </p>
                         <p style="font-size: 14px; font-style: italic;">{{ link.description }}</p>
                         <p>
-                            <form method="post" action=".">
-                                <input type="button" value="+1" class="radioup" type="button" name="up" />
-                                <input type="button" value="-1" class="radiodown" type="button" name="down" />
-                                <span style="font-size: 14px; color: #8D5C6C;">Rate: {{ link.rating }}</span>
+                            <form method="get" action=".">
+                            <p>
+                                <button id="like" class="btn btn-mini btn-primary" type="button" name="up" data-rate="{{link.rating}}">Like</button>
+                                <button id="dislike" class="btn btn-mini btn-primary" type="button" data-rate="{{link.rating}}" name="down">Dislike</button>
+                                <span id="like_count" style="font-size: 14px; color: #8D5C6C;">Rate: {{ link.rating }}</span>
+                            </p>
                             </form>
                         </p>
                     </div>
