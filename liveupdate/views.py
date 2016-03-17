@@ -9,6 +9,7 @@ from forms import AllFields, NewLink
 from django.contrib.auth import authenticate, login
 from urlparse import urlparse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def update(request):
     object_list = Update.objects.all()
@@ -59,7 +60,7 @@ def login_page(request):
         print("The username and password were incorrect.")
         return render(request, "login_page.html")
 
-
+# @login_required
 def allLinksPage(request):
     error = []
     category = Category.objects.all()
@@ -108,14 +109,17 @@ def about(request):
 def likes(request):
     context = RequestContext(request)
     rate = None
-    rate = request.GET['rate']
-    print(rate)
+    link = request.GET.get('name_link')
+    print(link)
     if request.method == 'GET':
-        rate = request.GET['rate']
+        rate = request.GET.get('rate')
+        link_id = request.GET.get('name_link')
         print(rate)
+        print(link_id)
     like = 0
     if rate:
-        rate = Links.objects.get(rating=int(rate))
+        rate = Links.objects.get(linkUrl=link_id).get('rating')
+        print(rate)
         if rate:
             like = rate.rating + 1
             rate.rating = like

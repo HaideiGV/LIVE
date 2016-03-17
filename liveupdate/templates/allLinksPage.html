@@ -7,34 +7,25 @@
                 It let you out from googling long time</span>
         </h3>
     </div>
-    <!--<script>-->
-          <!--$('#like').click(function(){-->
-            <!--var catid;-->
-            <!--catid = $(this).attr("data-catid");-->
-            <!--$.get('/like/', {rate_id: catid},-->
-                <!--function(data){-->
-                    <!--$('#like_count').html(data);-->
-                    <!--$('#like').hide();-->
-            <!--});-->
-          <!--});-->
-    <!--</script>-->
+
 {% endblock head %}
     <script type="text/javascript">
-          $('#like').click(function(){
-            var rate;
-            rate = $(this).attr("data-rate");
-            $.ajax(
-                '/like/',
-                {rate: rate},
-                function(data){
-                    $('#like_count').html(data);
-                    $('#like').hide();
-                });
-          });
+        $(document).ready(function() {
+            $('#like').click(function(){
+                var rate;
+                rate = $(this).attr("data-rate");
+                name_link = $(this).get("name_link");
+                $.get(
+                    '/like/',
+                    {rate: rate, name_link: name_link},
+                    function(data){
+                        $('#like_count').html(data);
+                        $('#like').hide();
+                    });
+            });
+        });
     </script>
 {% block content %}
-
-
         <div class="col-sm-3 col-sm-offset-0 blog-sidebar">
             <form action="." method="get">
                 {% if not error%}
@@ -61,23 +52,20 @@
                 <input type="submit" value="Search" />
             </form>
         </div>
-
         <div class="col-sm-6 blog-main">
             {% for link in links %}
                     <div style="background-color: #ebebe0; text-align: center; border: 2px dashed black;">
                         <p style="font-size: 16px; color: green;">
-                            <a href="{{ link.linkUrl }}" target="_blank">{{ link.linkUrl }}</a>
+                            <a id="name_link" href="{{ link.linkUrl }}" target="_blank">{{ link.linkUrl }}</a>
                         </p>
                         <p style="font-size: 14px; font-style: italic;">{{ link.description }}</p>
-                        <p>
-                            <form method="get" action=".">
+{#                        <form method="get" action=".">#}
                             <p>
                                 <button id="like" class="btn btn-mini btn-primary" type="button" name="up" data-rate="{{link.rating}}">Like</button>
                                 <button id="dislike" class="btn btn-mini btn-primary" type="button" data-rate="{{link.rating}}" name="down">Dislike</button>
                                 <span id="like_count" style="font-size: 14px; color: #8D5C6C;">Rate: {{ link.rating }}</span>
                             </p>
-                            </form>
-                        </p>
+{#                        </form>#}
                     </div>
                     <br/>
             {% endfor %}

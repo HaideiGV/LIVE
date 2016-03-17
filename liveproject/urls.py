@@ -8,5 +8,6 @@ urlpatterns = patterns(
     (r'^send-form/$', liveupdate.views.all_type_input_form),
     (r'^add-link/$', liveupdate.views.new_link),
     (r'^about/$', liveupdate.views.about),
+    (r'^accounts/login/$', liveupdate.views.login),
     url(r'^like/$', liveupdate.views.likes, name='like'),
     )
