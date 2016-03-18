@@ -15,10 +15,11 @@
                 var rate;
                 rate = $(this).attr("data-rate");
                 name_link = $(this).get("name_link");
-                $.get(
-                    '/like/',
-                    {rate: rate, name_link: name_link},
-                    function(data){
+                $.ajax(
+                    url: '/like/',
+                    type: "GET",
+                    data: {rate: rate, name_link: name_link},
+                    success: function(response){
                         $('#like_count').html(data);
                         $('#like').hide();
                     });
@@ -59,13 +60,12 @@
                             <a id="name_link" href="{{ link.linkUrl }}" target="_blank">{{ link.linkUrl }}</a>
                         </p>
                         <p style="font-size: 14px; font-style: italic;">{{ link.description }}</p>
-{#                        <form method="get" action=".">#}
-                            <p>
+                        <p>
                                 <button id="like" class="btn btn-mini btn-primary" type="button" name="up" data-rate="{{link.rating}}">Like</button>
                                 <button id="dislike" class="btn btn-mini btn-primary" type="button" data-rate="{{link.rating}}" name="down">Dislike</button>
                                 <span id="like_count" style="font-size: 14px; color: #8D5C6C;">Rate: {{ link.rating }}</span>
-                            </p>
-{#                        </form>#}
+                        </p>
+
                     </div>
                     <br/>
             {% endfor %}

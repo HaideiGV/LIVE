@@ -125,4 +125,4 @@ def likes(request):
             rate.rating = like
             rate.save()
 
-    return HttpResponse(like)
+    return HttpResponse(like, "text/javascript")
