@@ -16,7 +16,7 @@
                 rate = $(this).attr("data-rate");
                 name_link = $(this).get("name_link");
                 $.ajax(
-                    url: '/like/',
+                    url: '/',
                     type: "GET",
                     data: {rate: rate, name_link: name_link},
                     success: function(response){
