@@ -107,22 +107,23 @@ def about(request):
 
 
 def likes(request):
-    context = RequestContext(request)
     rate = None
-    link = request.GET.get('name_link')
-    print(link)
     if request.method == 'GET':
-        rate = request.GET.get('rate')
+        rate = request.GET.get('h2')
         link_id = request.GET.get('name_link')
-        print(rate)
-        print(link_id)
     like = 0
     if rate:
         rate = Links.objects.get(linkUrl=link_id).get('rating')
-        print(rate)
         if rate:
             like = rate.rating + 1
             rate.rating = like
             rate.save()
-
     return HttpResponse(like, "text/javascript")
+
+def ajax_result(request):
+    context = RequestContext(request)
+    links = []
+    if request.method == 'GET':
+        link = Links.objects.all()
+        links.append(link)
+    return HttpResponse(links, context)
