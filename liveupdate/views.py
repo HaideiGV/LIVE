@@ -4,12 +4,11 @@ from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render_to_response, RequestContext
 from django.core import serializers
 from django.views.generic import ListView
-import os
 from forms import AllFields, NewLink
 from django.contrib.auth import authenticate, login
 from urlparse import urlparse
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.core import serializers
+
 
 def update(request):
     object_list = Update.objects.all()
@@ -107,23 +106,25 @@ def about(request):
 
 
 def likes(request):
-    rate = None
-    if request.method == 'GET':
-        rate = request.GET.get('h2')
-        link_id = request.GET.get('name_link')
-    like = 0
-    if rate:
-        rate = Links.objects.get(linkUrl=link_id).get('rating')
-        if rate:
-            like = rate.rating + 1
-            rate.rating = like
-            rate.save()
-    return HttpResponse(like, "text/javascript")
+    rate = 0
+    if request.is_ajax():
+        link = request.POST.get('link_id')
+        print(link)
+        link_data = Links.objects.get(id=int(link))
+        if link_data:
+            link_data['rating'] += 1
+            rate = int(link_data['rating'])
+            link_data.save()
+        return HttpResponse(rate)
+    else:
+        return HttpResponse(rate)
+
 
 def ajax_result(request):
-    context = RequestContext(request)
     links = []
-    if request.method == 'GET':
-        link = Links.objects.all()
-        links.append(link)
-    return HttpResponse(links, context)
+    if request.is_ajax():
+        lnk = Links.objects.all()
+        # links = serializers.serialize('json', lnk, fields=('linkUrl'))
+        return HttpResponse(lnk)
+    else:
+        return HttpResponse(links)

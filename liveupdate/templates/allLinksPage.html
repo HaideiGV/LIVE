@@ -8,24 +8,18 @@
         </h3>
     </div>
 
-{% endblock head %}
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#like').click(function(){
-                var rate;
-                rate = $(this).attr("data-rate");
-                name_link = $(this).get("name_link");
-                $.ajax(
-                    url: '/',
-                    type: "GET",
-                    data: {rate: rate, name_link: name_link},
-                    success: function(response){
-                        $('#like_count').html(data);
-                        $('#like').hide();
-                    });
+            $("#like").click(function(){
+                var link_id = $(this).attr("data-rate");
+                $.get('/like/', {link_id: link_id}, function(data){
+                    $('.like_count').html(data);
+                });
             });
         });
     </script>
+{% endblock head %}
+
 {% block content %}
         <div class="col-sm-3 col-sm-offset-0 blog-sidebar">
             <form action="." method="get">
@@ -61,11 +55,12 @@
                         </p>
                         <p style="font-size: 14px; font-style: italic;">{{ link.description }}</p>
                         <p>
-                                <button id="like" class="btn btn-mini btn-primary" type="button" name="up" data-rate="{{link.rating}}">Like</button>
-                                <button id="dislike" class="btn btn-mini btn-primary" type="button" data-rate="{{link.rating}}" name="down">Dislike</button>
-                                <span id="like_count" style="font-size: 14px; color: #8D5C6C;">Rate: {{ link.rating }}</span>
+                            <button id="like" class="btn btn-mini btn-primary" name="up" data-rate="{{ link.id }}">Like</button>
+                            <span>
+                                <label>Rating: </label>
+                            </span>
+                            <span class="like_count" style="font-size: 14px; color: #8D5C6C;">{{ link.rating }}</span>
                         </p>
-
                     </div>
                     <br/>
             {% endfor %}

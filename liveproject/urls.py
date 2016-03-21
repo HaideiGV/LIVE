@@ -10,5 +10,5 @@ urlpatterns = patterns(
     (r'^about/$', liveupdate.views.about),
     (r'^ajax_result/$', liveupdate.views.ajax_result),
     (r'^accounts/login/$', liveupdate.views.login),
-    url(r'^like/$', liveupdate.views.likes, name='like'),
+    url(r'^like/(?P<link_id>[0-9]+)/$', liveupdate.views.likes, name='like'),
     )
