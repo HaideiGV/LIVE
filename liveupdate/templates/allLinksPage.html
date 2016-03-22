@@ -10,10 +10,26 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#like").click(function(){
+            $(".like").click(function(){
                 var link_id = $(this).attr("data-rate");
-                $.get('/like/', {link_id: link_id}, function(data){
-                    $('.like_count').html(data);
+                $.get(
+                '/like/',
+                {link_id: link_id, like: 1},
+                function(data){
+                    $('#like_count'+link_id).html(data);
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".dislike").click(function(){
+                var link_id = $(this).attr("data-rate");
+                $.get(
+                '/like/',
+                {link_id: link_id, dislike: 1},
+                function(data){
+                    $('#like_count'+link_id).html(data);
                 });
             });
         });
@@ -49,17 +65,19 @@
         </div>
         <div class="col-sm-6 blog-main">
             {% for link in links %}
+
                     <div style="background-color: #ebebe0; text-align: center; border: 2px dashed black;">
                         <p style="font-size: 16px; color: green;">
                             <a id="name_link" href="{{ link.linkUrl }}" target="_blank">{{ link.linkUrl }}</a>
                         </p>
                         <p style="font-size: 14px; font-style: italic;">{{ link.description }}</p>
                         <p>
-                            <button id="like" class="btn btn-mini btn-primary" name="up" data-rate="{{ link.id }}">Like</button>
+                            <button class="btn btn-mini btn-primary like" name="up" data-rate="{{ link.id }}">Like</button>
+                            <button class="btn btn-mini btn-primary dislike" name="down" data-rate="{{ link.id }}">Dislike</button>
                             <span>
                                 <label>Rating: </label>
                             </span>
-                            <span class="like_count" style="font-size: 14px; color: #8D5C6C;">{{ link.rating }}</span>
+                            <span id="like_count{{ link.id }}" class="like_count" style="font-size: 25px; color: red;">{{ link.rating }}</span>
                         </p>
                     </div>
                     <br/>

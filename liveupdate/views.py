@@ -2,7 +2,6 @@ from django.shortcuts import render
 from liveupdate.models import Update, ViewAllTypeFields, Links, Category
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render_to_response, RequestContext
-from django.core import serializers
 from django.views.generic import ListView
 from forms import AllFields, NewLink
 from django.contrib.auth import authenticate, login
@@ -80,20 +79,6 @@ def allLinksPage(request):
         return render(request,"allLinksPage.html", {'links': links,'category': category})
 
 
-def updateRate(request):
-    if request.method == 'POST':
-        if 'rateValue' in request.POST:
-            rateValue = request.POST.get('rateValue')
-            print(rateValue)
-            if request.POST.get('up'):
-                print(rateValue)
-                return HttpResponse('up')
-            elif request.POST.get('down'):
-                print(rateValue)
-                return HttpResponse('down')
-    return HttpResponse('Error')
-
-
 def ajax_update(request):
     if request.is_ajax():
         print(request.is_ajax())
@@ -107,24 +92,35 @@ def about(request):
 
 def likes(request):
     rate = 0
-    if request.is_ajax():
-        link = request.POST.get('link_id')
-        print(link)
-        link_data = Links.objects.get(id=int(link))
-        if link_data:
-            link_data['rating'] += 1
-            rate = int(link_data['rating'])
+    error = []
+    if request.method == 'GET':
+        link = request.GET.get('link_id')
+        like = request.GET.get('like')
+        dislike = request.GET.get('dislike')
+        link_data = Links.objects.filter(pk=int(link))[0]
+        if link_data and like:
+            link_data.rating += 1
+            rate = int(link_data.rating)
             link_data.save()
-        return HttpResponse(rate)
+            return HttpResponse(rate, {'error': error})
+        elif link_data and dislike:
+            link_data.rating -= 1
+            rate = int(link_data.rating)
+            link_data.save()
+            return HttpResponse(rate, {'error': error})
+        else:
+            error.append("You are already vote this link!")
+            link_data = Links.objects.filter(pk=int(link))[0]
+            rate = link_data.rating
+            return HttpResponse(rate, {'error': error})
     else:
-        return HttpResponse(rate)
+        return HttpResponse(rate, {'error': error})
 
 
 def ajax_result(request):
     links = []
     if request.is_ajax():
         lnk = Links.objects.all()
-        # links = serializers.serialize('json', lnk, fields=('linkUrl'))
         return HttpResponse(lnk)
     else:
         return HttpResponse(links)
