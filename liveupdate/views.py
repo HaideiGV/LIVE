@@ -2,9 +2,11 @@ from django.shortcuts import render
 from liveupdate.models import Update, ViewAllTypeFields, Links, Category
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render_to_response, RequestContext
-from django.views.generic import ListView
-from forms import AllFields, NewLink
-from django.contrib.auth import authenticate, login
+from django.views.generic import ListView, FormView
+from forms import AllFields, NewLink, UserForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from urlparse import urlparse
 from django.core import serializers
 
@@ -23,10 +25,9 @@ def all_type_input_form(request):
     form = AllFields()
     return render(request, 'message.html', {'form':form})
 
-
+@login_required
 def new_link(request):
     form = NewLink(request.POST or None)
-    # print(str(Category.objects.get(category=request.POST['category']).id))
     if form.is_valid():
         p = Links(
             category=Category.objects.get(pk=request.POST.get('category')),
@@ -43,22 +44,39 @@ class allView(ListView):
     template_name = 'detail_list.html'
 
 
+class UserView(FormView):
+    model = User
+    form_class = UserForm
+    success_url = '/register_success/'
+    template_name = 'register_form.html'
+
+
+def register_success(request):
+    p = User(
+            username=request.POST.get('username'),
+            password=request.POST.get('password'),
+            email=request.POST.get('email'))
+    p.save()
+    return HttpResponseRedirect('/')
+
+def logout_page(request):
+    logout(request)
+    return HttpResponseRedirect("/")
+
 def login_page(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
-    print("log/pass = ", username, password)
     user = authenticate(username=username, password=password)
     if user is not None:
         if user.is_active:
             login(request, user)
-            return HttpResponseRedirect('/detail/')
+            return HttpResponseRedirect('/')
         else:
             return HttpResponseRedirect('/login/')
     else:
-        print("The username and password were incorrect.")
         return render(request, "login_page.html")
 
-# @login_required
+@login_required
 def allLinksPage(request):
     error = []
     category = Category.objects.all()

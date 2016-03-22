@@ -1,17 +1,5 @@
 {% extends "base.html" %}
 
-{% block head %}
-
-<script>
-    $(document).ready(function() {
-                $('#data').click(function(){
-                    $.get("/ajax_result/", function(data){
-                        $("#loader").html(data);
-                    });
-                });
-    });
-</script>
-{% endblock head %}
 
 {% block content %}
     <h2 id="h2" style="text-align: center;">
@@ -19,14 +7,12 @@
             Some info about that resource
         </div>
     </h2>
-    <button id="data" >Load data</button>
     <br/>
     <h3 style="text-align: center; font-style: italic;">
         <p>
             This site created for quick search sources. Choose category and enjoy.
         </p>
     </h3>
-    <p id="loader" class="col-sm-12 blog-main"></p>
 
 
 {% endblock content %}

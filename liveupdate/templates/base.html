@@ -35,6 +35,12 @@
               <li><a href="/add-link/">Add New Link</a></li>
               <li><a href="/send-form/">Contacts</a></li>
               <li><a href="/about/">About</a></li>
+              {% if user.is_authenticated %}
+                <li><a href="/logout/">Log Out</a></li>
+              {% else %}
+                <li><a href="/accounts/login/">Log In</a></li>
+                <li><a href="/register/">Register</a></li>
+              {% endif %}
           </ul>
         </div>
       </div>
@@ -47,6 +53,8 @@
     {% block content %}
     {% endblock content %}
 
-
+    <p class="footer" style="text-align: center; font-style: italic; font-size: 15px;">
+        All rights reserved. Viacheslav Haidei Inc.
+    </p>
   </body>
 </html>

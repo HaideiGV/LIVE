@@ -1,6 +1,8 @@
-from django.forms import ModelForm, forms
-from models import ViewAllTypeFields, Update, Links, Category
+from django.forms import ModelForm
 from django import forms
+from models import ViewAllTypeFields, Links
+from django.contrib.auth.models import User
+
 
 class AllFields(ModelForm):
     class Meta:
@@ -12,3 +14,9 @@ class NewLink(ModelForm):
     class Meta:
         model = Links
         fields = ['category', 'linkUrl', 'description']
+
+
+class UserForm(forms.Form):
+    username = forms.CharField(max_length=100, min_length=5, label='Your name', help_text='Your name or nickname')
+    password = forms.CharField(max_length=100, min_length=5, label='Your password', widget=forms.PasswordInput)
+    email = forms.CharField(max_length=100, label='Email', widget=forms.EmailInput)
