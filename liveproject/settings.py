@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'liveupdate',
     'kombu.transport.django',
     'opbeat.contrib.django',
+    'oauth2_provider',
 )
 
 MIDDLEWARE_CLASSES = (

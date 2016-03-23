@@ -17,6 +17,6 @@ class NewLink(ModelForm):
 
 
 class UserForm(forms.Form):
-    username = forms.CharField(max_length=100, min_length=5, label='Your name', help_text='Your name or nickname')
-    password = forms.CharField(max_length=100, min_length=5, label='Your password', widget=forms.PasswordInput)
+    username = forms.CharField(max_length=100, label='Your name')
+    password = forms.CharField(max_length=100, label='Your password', widget=forms.PasswordInput)
     email = forms.CharField(max_length=100, label='Email', widget=forms.EmailInput)

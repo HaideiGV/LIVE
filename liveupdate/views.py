@@ -1,14 +1,15 @@
 from django.shortcuts import render
 from liveupdate.models import Update, ViewAllTypeFields, Links, Category
-from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
-from django.shortcuts import render_to_response, RequestContext
+from django.http import HttpResponse,  HttpResponseRedirect
+from django.shortcuts import render_to_response
 from django.views.generic import ListView, FormView
-from forms import AllFields, NewLink, UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from urlparse import urlparse
 from django.core import serializers
+from forms import NewLink
 
 
 def update(request):
@@ -21,10 +22,6 @@ def updates_after(request, id):
     response.write(serializers.serialize("json", Update.objects.filter(pk__gt=id)))
     return response
 
-def all_type_input_form(request):
-    form = AllFields()
-    return render(request, 'message.html', {'form':form})
-
 @login_required
 def new_link(request):
     form = NewLink(request.POST or None)
@@ -36,6 +33,7 @@ def new_link(request):
             description=request.POST['description']
         )
         p.save()
+        return HttpResponseRedirect('/')
     return render(request, 'new_link.html', {'form': form})
 
 
@@ -46,18 +44,20 @@ class allView(ListView):
 
 class UserView(FormView):
     model = User
-    form_class = UserForm
+    form_class = UserCreationForm
     success_url = '/register_success/'
     template_name = 'register_form.html'
 
 
 def register_success(request):
-    p = User(
-            username=request.POST.get('username'),
-            password=request.POST.get('password'),
-            email=request.POST.get('email'))
-    p.save()
-    return HttpResponseRedirect('/')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            p = form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request, "register_form.html", {'form': form})
 
 def logout_page(request):
     logout(request)
