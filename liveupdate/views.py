@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from urlparse import urlparse
 from django.core import serializers
-from forms import NewLink
+from forms import NewLink, AllFields
 
 
 def update(request):
@@ -21,6 +21,10 @@ def updates_after(request, id):
     response['Content-Type'] = "text/javascript"
     response.write(serializers.serialize("json", Update.objects.filter(pk__gt=id)))
     return response
+
+def all_type_input_form(request):
+    form = AllFields()
+    return render(request, 'message.html', {'form':form})
 
 @login_required
 def new_link(request):
