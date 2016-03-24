@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <div style="background-color: black;">
-        <h3 style="text-align: center; padding-top: 5%; color: gold;">
+    <div style="background-color: #e5e5e5;">
+        <h3 style="text-align: center; padding-top: 4%; color: #5e5e5e; margin-top: 3px;">
             <span>At this site you can find interesting links.
                 It let you out from googling long time</span>
         </h3>
     </div>
-
     <script type="text/javascript">
         $(document).ready(function() {
             $(".like").click(function(){
@@ -23,13 +22,26 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $(".dislike").click(function(){
+            $(".dislike").keyup(function(){
                 var link_id = $(this).attr("data-rate");
                 $.get(
                 '/like/',
                 {link_id: link_id, dislike: 1},
                 function(data){
                     $('#like_count'+link_id).html(data);
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#filter_rate").click(function(){
+                var filter_value = $(this).attr("value");
+                $.get(
+                '/rating_filter/',
+                {filter_value: filter_value},
+                function(data){
+                    $('.col-sm-6').html(data);
                 });
             });
         });
@@ -41,6 +53,7 @@
             <form action="." method="get">
                 {% if not error%}
                     <label>Search category by keyword: </label>
+                    <br/>
                     <input type="text" name="search" />
                 {% else %}
                     {% for e in error %}
@@ -62,9 +75,19 @@
                 </select>
                 <input type="submit" value="Search" />
             </form>
+            <br/>
+            <br/>
+            <br/>
+            <div>
+                <form action="." name="get">
+                    <label>Filter by rate:</label>
+                    <input id="filter_rate" class="ui-slider-horizontal" type="range" main="0" max="100" step="1" value="100" name="rating" />
+                </form>
+            </div>
         </div>
         <div class="col-sm-6 blog-main">
-            {% for link in links %}
+            {% if links %}
+                {% for link in links %}
 
                     <div style="background-color: #ebebe0; text-align: center; border: 2px dashed black;">
                         <p style="font-size: 16px; color: green;">
@@ -81,7 +104,12 @@
                         </p>
                     </div>
                     <br/>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <div style="text-align: center;">
+                    <p style="color: #adadad; font-size: 30px;">No such categories</p>
+                </div>
+            {% endif %}
         </div>
     <div class="col-sm-3 col-sm-offset-0 blog-sidebar" style="font-size: 16px;">
     <p style="font-size: 24px;"><strong>Banners</strong></p>

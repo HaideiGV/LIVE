@@ -87,11 +87,13 @@ def allLinksPage(request):
     links = Links.objects.all()
     if request.GET.get('search') != None or '':
         try:
-            cat_id = Category.objects.get(category=request.GET.get('search').lower())
-            links_by_cat = Links.objects.filter(category=cat_id)
+            query = request.GET.get('search').lower()
+            cat_id = Category.objects.filter(category__icontains=query).values('id')
+            print(cat_id)
+            links_by_cat = Links.objects.filter(category__in=cat_id)
         except:
             error.append("We have not such category. Please try again or send me a letter for add new category.")
-            links_by_cat = Links.objects.all()
+            links_by_cat = []
         return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category, 'error': error})
     elif request.GET.get('category') != None or '':
         cat_id = Category.objects.get(category=request.GET['category'])
@@ -139,10 +141,11 @@ def likes(request):
         return HttpResponse(rate, {'error': error})
 
 
-def ajax_result(request):
-    links = []
+def filter_rate(request):
     if request.is_ajax():
-        lnk = Links.objects.all()
+        rate_value = request.GET.get('filter_value')
+        lnk = Links.objects.filter(rating__lt=int(rate_value))
         return HttpResponse(lnk)
     else:
-        return HttpResponse(links)
+        lnk = Links.objects.all()
+        return HttpResponse(lnk)

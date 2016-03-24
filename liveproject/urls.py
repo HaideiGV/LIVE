@@ -11,7 +11,7 @@ urlpatterns = patterns(
     (r'^send-form/$', liveupdate.views.all_type_input_form),
     url(r'^register/$', UserView.as_view(), name='register'),
     (r'^register_success/$', liveupdate.views.register_success),
-    (r'^ajax_result/$', liveupdate.views.ajax_result),
+    (r'^rating_filter/$', liveupdate.views.filter_rate),
     (r'^login/$', liveupdate.views.login_page),
     (r'^logout/$', liveupdate.views.logout_page),
     (r'^accounts/login/$', liveupdate.views.login_page),

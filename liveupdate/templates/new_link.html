@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block new_post%}
-    <form action="." method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Share Link"/>
-    </form>
+    <div class="container" style="padding-top: 10%;">
+        <form class="form-signin"  action="." method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Share Link"/>
+        </form>
+    </div>
 {% endblock new_post %}

@@ -37,22 +37,32 @@
               <li><a href="/about/">About</a></li>
               {% if user.is_authenticated %}
                 <li><a href="/logout/">Log Out</a></li>
+                <li>
+                    <a style="color: yellow; text-align: left;">
+                        Hi, <strong>{{ user.username|capfirst }}</strong>
+                    </a>
+                </li>
               {% else %}
                 <li><a href="/accounts/login/">Log In</a></li>
                 <li><a href="/register/">Register</a></li>
                 <li><a href="/admin/">Admin</a></li>
               {% endif %}
+
           </ul>
         </div>
       </div>
     </nav>
 
-    <div class="container" style="padding-top: 100px; padding-left: 200px;">
+    <div class="container">
     {% block new_post %}
     {% endblock new_post%}
     </div>
-    {% block content %}
-    {% endblock content %}
+
+    <div style="padding-top: 5%;">
+
+        {% block content %}
+        {% endblock content %}
+    </div>
 
     <p class="footer" style="text-align: center; font-style: italic; font-size: 15px;">
         All rights reserved. Viacheslav Haidei Inc.
