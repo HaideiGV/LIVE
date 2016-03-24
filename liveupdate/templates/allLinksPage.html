@@ -22,7 +22,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $(".dislike").keyup(function(){
+            $(".dislike").click(function(){
                 var link_id = $(this).attr("data-rate");
                 $.get(
                 '/like/',
@@ -35,7 +35,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#filter_rate").click(function(){
+            $("#filter_rate").keyup(function(){
                 var filter_value = $(this).attr("value");
                 $.get(
                 '/rating_filter/',
