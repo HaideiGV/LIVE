@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
+from datetime import datetime
 
 
-# Create your models here.
+
 class Update(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     text = models.CharField(max_length=200)
@@ -17,28 +19,14 @@ class Update(models.Model):
 
 
 
-class ViewAllTypeFields(models.Model):
-    bigint_field = models.BigIntegerField()
-    binary_field = models.BinaryField()
-    boolean_field = models.BooleanField()
-    char_field = models.CharField(max_length=10)
-    comma_separ_field = models.CommaSeparatedIntegerField(max_length=500)
-    date_field = models.DateField(auto_now_add=True)
-    datetime_field = models.DateTimeField(auto_now=False)
-    decimal_field = models.DecimalField(max_digits=20, decimal_places=5)
-    email_field = models.EmailField(max_length=254)
-    float_field = models.FloatField()
-    integer_field = models.IntegerField()
-    ip_field = models.GenericIPAddressField(null=True)
-    null_bool_field = models.NullBooleanField()
-    positive_integer_field = models.PositiveIntegerField()
-    slug = models.SlugField(max_length=50)
+class Contacts(models.Model):
+    subject = models.CharField(max_length=10)
+    date = models.DateTimeField(auto_now=False, default=datetime.utcnow())
+    email = models.EmailField(max_length=254)
     text = models.TextField(max_length=100)
-    time = models.TimeField(auto_now=True)
-    url_field = models.URLField(max_length=200)
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['-date']
 
     def __unicode__(self):
         return str(self.text)
@@ -64,3 +52,15 @@ class Links(models.Model):
 
     def __unicode__(self):
         return str(self.linkUrl)
+
+
+class LinkRateEvent(models.Model):
+    link = models.ForeignKey(Links)
+    user = models.ForeignKey(User)
+    is_like = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-is_like']
+
+    def __unicode__(self):
+        return str(self.is_like)

@@ -43,11 +43,19 @@
                     </a>
                 </li>
               {% else %}
-                <li><a href="/accounts/login/">Log In</a></li>
-                <li><a href="/register/">Register</a></li>
+                <li style="color:red;"><a href="/accounts/login/">Log In</a></li>
+                <li style="color:red;"><a href="/register/">Register</a></li>
                 <li><a href="/admin/">Admin</a></li>
+                <li>
+                    <a style="color:white;" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Facebook</a>
+                </li>
+                <li>
+                    <a style="color:white;" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Google</a>
+                </li>
+                <li>
+                    <a style="color:white;" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Twitter</a>
+                </li>
               {% endif %}
-
           </ul>
         </div>
       </div>

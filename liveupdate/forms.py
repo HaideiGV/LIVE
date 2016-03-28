@@ -1,13 +1,12 @@
 from django.forms import ModelForm
 from django import forms
-from models import ViewAllTypeFields, Links
-from django.contrib.auth.models import User
+from models import Contacts, Links
 
 
-class AllFields(ModelForm):
+class ContactForm(ModelForm):
     class Meta:
-        model = ViewAllTypeFields
-        fields = ['char_field', 'email_field', 'url_field', 'text']
+        model = Contacts
+        fields = ['subject', 'email', 'text']
 
 
 class NewLink(ModelForm):

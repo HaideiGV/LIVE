@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from liveupdate.models import Update, ViewAllTypeFields, Links, Category
+from liveupdate.models import Update, Contacts, Links, Category, LinkRateEvent
 from django.http import HttpResponse,  HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.views.generic import ListView, FormView
@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from urlparse import urlparse
 from django.core import serializers
-from forms import NewLink, AllFields
+from forms import NewLink, ContactForm
 
 
 def update(request):
@@ -22,8 +22,11 @@ def updates_after(request, id):
     response.write(serializers.serialize("json", Update.objects.filter(pk__gt=id)))
     return response
 
-def all_type_input_form(request):
-    form = AllFields()
+def contact_form(request):
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/')
     return render(request, 'message.html', {'form':form})
 
 @login_required
@@ -39,11 +42,6 @@ def new_link(request):
         p.save()
         return HttpResponseRedirect('/')
     return render(request, 'new_link.html', {'form': form})
-
-
-class allView(ListView):
-    model = ViewAllTypeFields
-    template_name = 'detail_list.html'
 
 
 class UserView(FormView):
@@ -89,7 +87,6 @@ def allLinksPage(request):
         try:
             query = request.GET.get('search').lower()
             cat_id = Category.objects.filter(category__icontains=query).values('id')
-            print(cat_id)
             links_by_cat = Links.objects.filter(category__in=cat_id)
         except:
             error.append("We have not such category. Please try again or send me a letter for add new category.")
@@ -121,16 +118,24 @@ def likes(request):
         link = request.GET.get('link_id')
         like = request.GET.get('like')
         dislike = request.GET.get('dislike')
-        link_data = Links.objects.filter(pk=int(link))[0]
-        if link_data and like:
-            link_data.rating += 1
-            rate = int(link_data.rating)
-            link_data.save()
+        link_data = Links.objects.filter(pk=int(link))
+        link_event, new_event = LinkRateEvent.objects.get_or_create(user=User.objects.get(id=request.user.id), link=link_data[0])
+        if link_data and like and not link_event.is_like:
+            link_data[0].rating += 1
+            rate = int(link_data[0].rating)
+            link_data[0].save()
+            if link_event:
+                link_event.is_like = True
+                link_event.save()
+            else:
+                new_event.save()
             return HttpResponse(rate, {'error': error})
-        elif link_data and dislike:
-            link_data.rating -= 1
-            rate = int(link_data.rating)
-            link_data.save()
+        elif link_data and dislike and link_event.is_like:
+            link_data[0].rating -= 1
+            rate = int(link_data[0].rating)
+            link_data[0].save()
+            link_event.is_like = False
+            link_event.save()
             return HttpResponse(rate, {'error': error})
         else:
             error.append("You are already vote this link!")
@@ -149,3 +154,29 @@ def filter_rate(request):
     else:
         lnk = Links.objects.all()
         return HttpResponse(lnk)
+
+
+#
+# from django.contrib.auth import login
+# from django.shortcuts import redirect
+# from social_auth.decorators import dsa_view
+#
+# @dsa_view()
+# def register_by_access_token(request, backend, *args, **kwargs):
+#     access_token = request.GET.get('access_token')
+#     user = backend.do_auth(access_token)
+#     if user and user.is_active:
+#         login(request, user)
+#     return redirect('/')
+
+
+
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
+
+def home(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('login_page.html',
+                             context_instance=context)

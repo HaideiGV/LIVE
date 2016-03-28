@@ -8,7 +8,7 @@ urlpatterns = patterns(
     (r'^$', liveupdate.views.allLinksPage),
     (r'^add-link/$', liveupdate.views.new_link),
     (r'^about/$', liveupdate.views.about),
-    (r'^send-form/$', liveupdate.views.all_type_input_form),
+    (r'^send-form/$', liveupdate.views.contact_form),
     url(r'^register/$', UserView.as_view(), name='register'),
     (r'^register_success/$', liveupdate.views.register_success),
     (r'^rating_filter/$', liveupdate.views.filter_rate),
@@ -17,4 +17,9 @@ urlpatterns = patterns(
     (r'^accounts/login/$', liveupdate.views.login_page),
     url(r'^like/$', liveupdate.views.likes, name='like'),
     url(r'^admin/', include(admin.site.urls)),
+    # url(r'', include('social_auth.urls')),
+    url(r'^home/$', liveupdate.views.home, name='home'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
+
     )
