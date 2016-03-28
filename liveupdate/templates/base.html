@@ -18,7 +18,7 @@
     {% endblock head %}
   </head>
 
-  <body style="background: linear-gradient(to right, #fff7e6, #ffffe7);">
+  <body style="height: 100%; background-color: #666; text-shadow: 0 6px 9px rgba(0,0,0,.5); font-family:Ubuntu;">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -68,12 +68,16 @@
 
     <div style="padding-top: 5%;">
 
+
         {% block content %}
         {% endblock content %}
     </div>
 
-    <p class="footer" style="text-align: center; font-style: italic; font-size: 15px;">
-        All rights reserved. Viacheslav Haidei Inc.
-    </p>
+
+        {% block footer %}
+                <p class="footer" style="text-align: center; font-style: italic; font-size: 15px; color: #e5e5e5;">
+                    All rights reserved. Viacheslav Haidei Inc.
+                </p>
+        {% endblock footer %}
   </body>
 </html>

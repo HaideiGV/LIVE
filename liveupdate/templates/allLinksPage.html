@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <div style="background-color: #e5e5e5;">
-        <h3 style="text-align: center; padding-top: 4%; color: #5e5e5e; margin-top: 3px;">
-            <span>At this site you can find interesting links.
-                It let you out from googling long time</span>
+        <h3 style="text-align: center; padding-top: 6%; font-size: 30px;">
+            <strong>
+                <span>At this site you can find interesting links.
+                    It let you out from googling long time</span>
+            </strong>
         </h3>
-    </div>
     <script type="text/javascript">
         $(document).ready(function() {
             $(".like").click(function(){
@@ -89,18 +89,18 @@
             {% if links %}
                 {% for link in links %}
 
-                    <div style="background-color: #ebebe0; text-align: center; border: 2px dashed black;">
-                        <p style="font-size: 16px; color: green;">
+                    <div style="background-color: #ebebe0; text-align: center; border: 2px double black;">
+                        <p style="font-size: 16px;">
                             <a id="name_link" href="{{ link.linkUrl }}" target="_blank">{{ link.linkUrl }}</a>
                         </p>
-                        <p style="font-size: 14px; font-style: italic;">{{ link.description }}</p>
+                        <p style="font-size: 13px; font-style: italic; color: #080808;">{{ link.description }}</p>
                         <p>
-                            <button class="btn btn-mini btn-primary like" name="up" data-rate="{{ link.id }}">Like</button>
-                            <button class="btn btn-mini btn-primary dislike" name="down" data-rate="{{ link.id }}">Dislike</button>
+                            <button class="btn btn-mini btn-success like" name="up" data-rate="{{ link.id }}">Like</button>
+                            <button class="btn btn-mini btn-danger dislike" name="down" data-rate="{{ link.id }}">Dislike</button>
                             <span>
-                                <label>Rating: </label>
+                                <label style="color: #080808;">Rating: </label>
                             </span>
-                            <span id="like_count{{ link.id }}" class="like_count" style="font-size: 25px; color: red;">{{ link.rating }}</span>
+                            <span id="like_count{{ link.id }}" class="like_count" style="font-size: 20px; color: red;">{{ link.rating }}</span>
                         </p>
                     </div>
                     <br/>
@@ -114,16 +114,18 @@
     <div class="col-sm-3 col-sm-offset-0 blog-sidebar" style="font-size: 16px;">
     <p style="font-size: 24px;"><strong>Banners</strong></p>
     <a href="http://freevjachlink.com" target="_blank">
-        <img data-holder-rendered="true" src="/static/images/link.png" style="width: 200px; height: 200px;" class="img-thumbnail">
+        <img data-holder-rendered="true" src="/static/images/link.png" style="width: 200px; height: 200px;" class="img-responsive">
     </a>
         <br/>
         <a href="http://freevjachlink.com" target="_blank">
-        <img data-holder-rendered="true" src="/static/images/link.png" style="width: 200px; height: 200px;" class="img-thumbnail">
+        <img data-holder-rendered="true" src="/static/images/link.png" style="width: 200px; height: 200px;" class="img-responsive">
     </a>
-        <p style="font-size: 24px;"><strong>Partners</strong></p>
-        <p><a href="http://microsoft.com" style="color: black;">Microsoft</a></p>
-        <p><a href="http://python.org" style="color: black;">Python</a></p>
-        <p><a href="http://wiki.org" style="color: black;">Wikipedia</a></p>
+        <p style="font-size: 24px; margin-top: 20px;"><strong>Partners</strong></p>
+        <div style="border: 2px dotted white; text-align: center;">
+            <p><a href="http://microsoft.com" style="color: black;">Microsoft</a></p>
+            <p><a href="http://python.org" style="color: black;">Python</a></p>
+            <p><a href="http://wiki.org" style="color: black;">Wikipedia</a></p>
+        </div>
     </div>
 
 
