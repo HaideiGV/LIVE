@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
-from django.utils.timezone import now
-
 
 
 class Update(models.Model):
@@ -19,7 +17,6 @@ class Update(models.Model):
         )
 
 
-
 class Contacts(models.Model):
     subject = models.CharField(max_length=10)
     date = models.DateTimeField(auto_now=False, default=datetime.now())
@@ -34,13 +31,12 @@ class Contacts(models.Model):
 
 
 class Category(models.Model):
-    category = models.CharField(max_length=200)
+    category = models.CharField(max_length=200, default='Unknown')
     class Meta:
         ordering = ['category']
 
     def __unicode__(self):
         return str(self.category)
-
 
 
 class Links(models.Model):

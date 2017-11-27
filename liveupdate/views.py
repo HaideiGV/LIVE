@@ -1,20 +1,21 @@
-from django.shortcuts import render
-from liveupdate.models import Update, Contacts, Links, Category, LinkRateEvent
+from django.shortcuts import render, render_to_response
+from liveupdate.models import Update, Links, Category, LinkRateEvent
 from django.http import HttpResponse,  HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.views.generic import ListView, FormView
+from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from urlparse import urlparse
+from django.template.context import RequestContext
+from urllib.parse import urlparse
 from django.core import serializers
-from forms import NewLink, ContactForm
+from .forms import NewLink, ContactForm
 
 
 def update(request):
     object_list = Update.objects.all()
     return render_to_response('update_list.html', {'object_list': object_list})
+
 
 def updates_after(request, id):
     response = HttpResponse()
@@ -22,12 +23,14 @@ def updates_after(request, id):
     response.write(serializers.serialize("json", Update.objects.filter(pk__gt=id)))
     return response
 
+
 def contact_form(request):
     form = ContactForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        form.save(commit=True)
         return HttpResponseRedirect('/')
     return render(request, 'message.html', {'form':form})
+
 
 @login_required
 def new_link(request):
@@ -55,15 +58,17 @@ def register_success(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            p = form.save()
+            form.save(commit=True)
             return HttpResponseRedirect('/')
     else:
         form = UserCreationForm()
     return render(request, "register_form.html", {'form': form})
 
+
 def logout_page(request):
     logout(request)
     return HttpResponseRedirect("/")
+
 
 def login_page(request):
     username = request.POST.get('username')
@@ -78,26 +83,27 @@ def login_page(request):
     else:
         return render(request, "login_page.html")
 
+
 @login_required
-def allLinksPage(request):
+def all_links(request):
     error = []
     category = Category.objects.all()
     links = Links.objects.all()
-    if request.GET.get('search') != None or '':
+    if request.GET.get('search') is not None or '':
         try:
             query = request.GET.get('search').lower()
             cat_id = Category.objects.filter(category__icontains=query).values('id')
             links_by_cat = Links.objects.filter(category__in=cat_id)
-        except:
+        except Exception:
             error.append("We have not such category. Please try again or send me a letter for add new category.")
             links_by_cat = []
-        return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category, 'error': error})
-    elif request.GET.get('category') != None or '':
+        return render(request, "all_links.html", {'links': links_by_cat, 'category': category, 'error': error})
+    elif request.GET.get('category') is not None or '':
         cat_id = Category.objects.get(category=request.GET['category'])
         links_by_cat = Links.objects.filter(category=cat_id)
-        return render(request, "allLinksPage.html", {'links': links_by_cat, 'category': category})
+        return render(request, "all_links.html", {'links': links_by_cat, 'category': category})
     else:
-        return render(request,"allLinksPage.html", {'links': links,'category': category})
+        return render(request, "all_links.html", {'links': links, 'category': category})
 
 
 def ajax_update(request):
@@ -106,6 +112,7 @@ def ajax_update(request):
         request_data = request.POST
         print(request_data)
         return HttpResponse("OK")
+
 
 def about(request):
     return render(request, "about.html")
@@ -156,27 +163,6 @@ def filter_rate(request):
         return HttpResponse(lnk)
 
 
-#
-# from django.contrib.auth import login
-# from django.shortcuts import redirect
-# from social_auth.decorators import dsa_view
-#
-# @dsa_view()
-# def register_by_access_token(request, backend, *args, **kwargs):
-#     access_token = request.GET.get('access_token')
-#     user = backend.do_auth(access_token)
-#     if user and user.is_active:
-#         login(request, user)
-#     return redirect('/')
-
-
-
-from django.shortcuts import render_to_response
-from django.template.context import RequestContext
-
 def home(request):
-   context = RequestContext(request,
-                           {'request': request,
-                            'user': request.user})
-   return render_to_response('login_page.html',
-                             context_instance=context)
+    context = RequestContext(request, {'request': request, 'user': request.user})
+    return render_to_response('login_page.html', context_instance=context)

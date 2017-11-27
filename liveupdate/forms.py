@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from models import Contacts, Links
+from .models import Contacts, Links
 
 
 class ContactForm(ModelForm):
@@ -12,7 +12,7 @@ class ContactForm(ModelForm):
 class NewLink(ModelForm):
     class Meta:
         model = Links
-        fields = ['category', 'linkUrl', 'description']
+        fields = ['linkUrl', 'description']
 
 
 class UserForm(forms.Form):
