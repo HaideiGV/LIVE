@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495635f2-955c-42e5-9239-1fd4ba036661" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/emacs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/requariments.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/liveupdate/templates/allLinksPage.html" afterPath="$PROJECT_DIR$/liveupdate/templates/all_links.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/liveproject.iml" afterPath="$PROJECT_DIR$/.idea/liveproject.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveproject/settings.py" afterPath="$PROJECT_DIR$/liveproject/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveproject/urls.py" afterPath="$PROJECT_DIR$/liveproject/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/forms.py" afterPath="$PROJECT_DIR$/liveupdate/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/models.py" afterPath="$PROJECT_DIR$/liveupdate/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/templates/base.html" afterPath="$PROJECT_DIR$/liveupdate/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/templates/login_page.html" afterPath="$PROJECT_DIR$/liveupdate/templates/login_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/views.py" afterPath="$PROJECT_DIR$/liveupdate/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <ignored path="liveproject.iws" />
@@ -59,8 +46,18 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+            <state relative-caret-position="45">
+              <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -93,8 +90,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="120" column="20" lean-forward="false" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="20" />
+            <state relative-caret-position="82">
+              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="2" selection-end-line="122" selection-end-column="3" />
               <folding>
                 <element signature="e#384#393#0" expanded="true" />
               </folding>
@@ -146,8 +143,8 @@
       <find>s</find>
       <find>all_links</find>
       <find>new_</find>
-      <find>socia</find>
       <find>save</find>
+      <find>socia</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,13 +170,13 @@
         <option value="$PROJECT_DIR$/liveupdate/static/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/liveupdate/templates/allLinksPage.html" />
         <option value="$PROJECT_DIR$/liveproject/urls.py" />
-        <option value="$PROJECT_DIR$/liveproject/settings.py" />
         <option value="$PROJECT_DIR$/liveupdate/templates/base.html" />
         <option value="$PROJECT_DIR$/liveupdate/templates/login_page.html" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/liveupdate/models.py" />
         <option value="$PROJECT_DIR$/liveupdate/forms.py" />
         <option value="$PROJECT_DIR$/liveupdate/views.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/liveproject/settings.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -920,29 +917,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../envs/live-env/lib/python3.6/site-packages/django/contrib/auth/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="61" column="4" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="120" column="20" lean-forward="false" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="20" />
-          <folding>
-            <element signature="e#384#393#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1046,10 +1025,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="2" selection-end-line="122" selection-end-column="3" />
+          <folding>
+            <element signature="e#384#393#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        <state relative-caret-position="45">
+          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
           <folding />
         </state>
       </provider>
