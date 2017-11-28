@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block new_post%}
-    <div style="margin-left: 15%; padding-left: 100px; padding-top: 10%;">
+    <div class="login-block">
         <h1>Log in system:</h1>
         <form class="form-group-lg" action="." method="post">
             {% csrf_token %}
@@ -9,17 +9,5 @@
             <input class="btn btn-lg btn-success" type="submit" value="Submit"/>
         </form>
     </div>
- <div>
-{# <h1>Third-party authentication demo</h1>#}
-{##}
-{# <p>#}
-{#   {% if user and not user.is_anonymous %}#}
-{#     Hello {{ user.get_full_name|default:user.username }}!#}
-{#   {% else %}#}
-{#     I don’t think we’ve met before.#}
-{#   {% endif %}#}
-{# </p>#}
- </div>
-
 
 {% endblock new_post%}

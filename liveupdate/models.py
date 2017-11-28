@@ -31,7 +31,8 @@ class Contacts(models.Model):
 
 
 class Category(models.Model):
-    category = models.CharField(max_length=200, default='Unknown')
+    category = models.CharField(max_length=200, default='Unknown', unique=True)
+
     class Meta:
         ordering = ['category']
 
@@ -44,6 +45,7 @@ class Links(models.Model):
     linkUrl = models.URLField(max_length=500, unique=True)
     rating = models.IntegerField(default=0)
     description = models.CharField(max_length=500)
+
     class Meta:
         ordering = ['linkUrl']
 

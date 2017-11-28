@@ -37,7 +37,7 @@ def new_link(request):
     form = NewLink(request.POST or None)
     if form.is_valid():
         p = Links(
-            category=Category.objects.get(pk=request.POST.get('category')),
+            category=Category.objects.get(category='Unknown'),
             linkUrl='http://'+urlparse(request.POST['linkUrl']).hostname,
             rating=0,
             description=request.POST['description']
@@ -99,7 +99,7 @@ def all_links(request):
             links_by_cat = []
         return render(request, "all_links.html", {'links': links_by_cat, 'category': category, 'error': error})
     elif request.GET.get('category') is not None or '':
-        cat_id = Category.objects.get(category=request.GET['category'])
+        cat_id = Category.objects.get(category=request.GET['category'])[0]
         links_by_cat = Links.objects.filter(category=cat_id)
         return render(request, "all_links.html", {'links': links_by_cat, 'category': category})
     else:

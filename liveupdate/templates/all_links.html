@@ -1,12 +1,6 @@
 {% extends "base.html" %}
 
 {% block head %}
-        <h3 style="text-align: center; padding-top: 6%; font-size: 30px;">
-            <strong>
-                <span>At this site you can find interesting links.
-                    It let you out from googling long time</span>
-            </strong>
-        </h3>
     <script type="text/javascript">
         $(document).ready(function() {
             $(".like").click(function(){
@@ -57,7 +51,7 @@
                     <input type="text" name="search" />
                 {% else %}
                     {% for e in error %}
-                        <p style="color:red;"><strong>{{ e }}</strong></p>
+                        <p class="auth-button"><strong>{{ e }}</strong></p>
                     {% endfor %}
                 {% endif %}
                 <input type="submit" value="Search" />
@@ -70,7 +64,7 @@
                 <br/>
                 <select  name="category">
                     {% for cat in category %}
-                        <option name="cat_val">{{ cat }}</option>
+                        <option name="cat_val">{{ cat.category }}</option>
                     {% endfor %}
                 </select>
                 <input type="submit" value="Search" />
@@ -89,42 +83,34 @@
             {% if links %}
                 {% for link in links %}
 
-                    <div style="background-color: #ebebe0; text-align: center; border: 2px double black;">
-                        <p style="font-size: 16px;">
+                    <div class="link-body-block">
+                        <p class="link-url">
                             <a id="name_link" href="{{ link.linkUrl }}" target="_blank">{{ link.linkUrl }}</a>
                         </p>
-                        <p style="font-size: 13px; font-style: italic; color: #080808;">{{ link.description }}</p>
+                        <p class="link-description">{{ link.description }}</p>
                         <p>
                             <button class="btn btn-mini btn-success like" name="up" data-rate="{{ link.id }}">Like</button>
                             <button class="btn btn-mini btn-danger dislike" name="down" data-rate="{{ link.id }}">Dislike</button>
                             <span>
-                                <label style="color: #080808;">Rating: </label>
+                                <label id="rating-label">Rating: </label>
                             </span>
-                            <span id="like_count{{ link.id }}" class="like_count" style="font-size: 20px; color: red;">{{ link.rating }}</span>
+                            <span id="like_count{{ link.id }}" class="like_count">{{ link.rating }}</span>
                         </p>
                     </div>
                     <br/>
                 {% endfor %}
             {% else %}
-                <div style="text-align: center;">
-                    <p style="color: #adadad; font-size: 30px;">No such categories</p>
+                <div id="no-category-block">
+                    <p id="no-category-description">No such categories</p>
                 </div>
             {% endif %}
         </div>
-    <div class="col-sm-3 col-sm-offset-0 blog-sidebar" style="font-size: 16px;">
-    <p style="font-size: 24px;"><strong>Banners</strong></p>
-    <a href="http://freevjachlink.com" target="_blank">
-        <img data-holder-rendered="true" src="/static/images/link.png" style="width: 200px; height: 200px;" class="img-responsive">
-    </a>
-        <br/>
-        <a href="http://freevjachlink.com" target="_blank">
-        <img data-holder-rendered="true" src="/static/images/link.png" style="width: 200px; height: 200px;" class="img-responsive">
-    </a>
-        <p style="font-size: 24px; margin-top: 20px;"><strong>Partners</strong></p>
-        <div style="border: 2px dotted white; text-align: center;">
-            <p><a href="http://microsoft.com" style="color: black;">Microsoft</a></p>
-            <p><a href="http://python.org" style="color: black;">Python</a></p>
-            <p><a href="http://wiki.org" style="color: black;">Wikipedia</a></p>
+    <div class="col-sm-3 col-sm-offset-0 blog-sidebar" >
+        <p class="partners-header"><strong>Partners</strong></p>
+        <div class="partner-link">
+            <p><a href="http://microsoft.com" >Microsoft</a></p>
+            <p><a href="http://python.org" >Python</a></p>
+            <p><a href="http://wiki.org" >Wikipedia</a></p>
         </div>
     </div>
 

@@ -1,0 +1,110 @@
+.base-body {
+    height: 100%;
+    font-family: Ubuntu;
+}
+
+#hi-style {
+    color: yellow;
+    text-align: left;
+}
+
+.auth-button {
+    color:red;
+}
+
+.content-block {
+    padding-top: 5%;
+}
+
+.footer {
+    padding-top: 1em;
+    text-align: center;
+    font-style: italic;
+    font-size: 15px;
+    color: darkgrey;
+}
+
+.new-link {
+    padding-top: 10%;
+}
+
+.about-block {
+    text-align: center;
+}
+
+#about-description {
+    text-align: center;
+    font-style: italic;
+}
+
+.login-block {
+    margin-left: 15%;
+    padding-left: 100px;
+    padding-top: 10%;
+}
+
+.message-block {
+    text-align: center;
+}
+
+#header-block {
+    text-align: center;
+    padding-top: 6%;
+    font-size: 30px;
+}
+
+.link-url {
+    font-size: 16px;
+}
+
+.link-description {
+    font-size: 13px;
+    font-style: italic;
+    color: #080808;
+}
+
+#rating-label {
+    color: #080808;
+}
+
+.like_count {
+    font-size: 20px;
+    color: red;
+}
+
+#no-category-block {
+    text-align: center;
+}
+
+#no-category-description {
+    color: #adadad;
+    font-size: 30px;
+}
+
+.banner-block {
+    font-size: 24px;
+}
+
+.img-responsive {
+    width: 50px;
+    height: 50px;
+    align-content: center;
+}
+
+.partners-header {
+    font-size: 24px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.partner-link {
+    border: 2px dotted white;
+    text-align: center;
+}
+
+.link-body-block {
+    /*background-color: #ebebe0;*/
+    background-color: darkgrey;
+    text-align: center;
+    border: 3px double darkolivegreen;
+}

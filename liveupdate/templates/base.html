@@ -8,7 +8,7 @@
     <link rel="icon" href="/static/images/favicon.ico">
     <title>Free Links</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="/static/css/starter-template.css" rel="stylesheet">
+    <link href="/static/css/base.css" rel="stylesheet">
     <script type="text/javascript" src="/static/js/jquery-1.11.2.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -16,8 +16,7 @@
     {% endblock head %}
   </head>
 
-  <body style="height: 100%; background-color: #666; text-shadow: 0 6px 9px rgba(0,0,0,.5); font-family:Ubuntu;">
-
+  <body class="base-body">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -36,13 +35,13 @@
               {% if user.is_authenticated %}
                 <li><a href="/logout/">Log Out</a></li>
                 <li>
-                    <a style="color: yellow; text-align: left;">
+                    <a id="hi-style">
                         Hi, <strong>{{ user.username|capfirst }}</strong>
                     </a>
                 </li>
               {% else %}
-                <li style="color:red;"><a href="/accounts/login/">Log In</a></li>
-                <li style="color:red;"><a href="/register/">Register</a></li>
+                <li class="auth-button"><a href="/accounts/login/">Log In</a></li>
+                <li class="auth-button"><a href="/register/">Register</a></li>
                 <li><a href="/admin/">Admin</a></li>
               {% endif %}
           </ul>
@@ -51,22 +50,17 @@
     </nav>
 
     <div class="container">
-    {% block new_post %}
-    {% endblock new_post%}
+        {% block new_post %}
+        {% endblock new_post%}
     </div>
 
-    <div style="padding-top: 5%;">
-
-
+    <div class="content-block">
         {% block content %}
         {% endblock content %}
     </div>
 
-
-        {% block footer %}
-                <p class="footer" style="text-align: center; font-style: italic; font-size: 15px; color: #e5e5e5;">
-                    All rights reserved. Viacheslav Haidei Inc.
-                </p>
-        {% endblock footer %}
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <p class="footer" >All rights reserved. Viacheslav Haidei Inc.</p>
+    </nav>
   </body>
 </html>
