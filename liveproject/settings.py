@@ -111,19 +111,19 @@ WSGI_APPLICATION = 'liveproject.wsgi.application'
 #     }
 
 # local
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'live',
-        'USER': 'live',
-        'PASSWORD': 'live',
-        'HOST': 'localhost',
-        'PORT': 5432
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'live',
+#         'USER': 'live',
+#         'PASSWORD': 'live',
+#         'HOST': 'localhost',
+#         'PORT': 5432
+#     }
+# }
 
 #
-# #heroku configs
+# #heroku configs haideigv
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -134,6 +134,18 @@ DATABASES = {
 #         'PORT': '',
 #     }
 # }
+
+# gaydeyvo
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dbf8h88202hudn',
+        'USER': 'sbmbrqjijjxtnh',
+        'PASSWORD': 'fe2ae896fdef191b8bcf2d6d25244f403c7570e61e034b316db391a00cd74a34',
+        'HOST': 'ec2-54-235-210-115.compute-1.amazonaws.com',
+        'PORT': 5432,
+    }
+}
 
 
 

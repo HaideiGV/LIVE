@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495635f2-955c-42e5-9239-1fd4ba036661" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/liveupdate/static/css/starter-template.css" afterPath="$PROJECT_DIR$/liveupdate/static/css/base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveproject/settings.py" afterPath="$PROJECT_DIR$/liveproject/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/models.py" afterPath="$PROJECT_DIR$/liveupdate/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/templates/about.html" afterPath="$PROJECT_DIR$/liveupdate/templates/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/templates/all_links.html" afterPath="$PROJECT_DIR$/liveupdate/templates/all_links.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/templates/base.html" afterPath="$PROJECT_DIR$/liveupdate/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/templates/login_page.html" afterPath="$PROJECT_DIR$/liveupdate/templates/login_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/templates/message.html" afterPath="$PROJECT_DIR$/liveupdate/templates/message.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/templates/new_link.html" afterPath="$PROJECT_DIR$/liveupdate/templates/new_link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/liveupdate/views.py" afterPath="$PROJECT_DIR$/liveupdate/views.py" />
     </list>
     <ignored path="liveproject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,11 +62,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="message.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="message.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/liveupdate/templates/message.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
               <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="467">
+              <caret line="141" column="31" lean-forward="false" selection-start-line="141" selection-start-column="31" selection-end-line="141" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -119,7 +118,7 @@
         <entry file="file://$PROJECT_DIR$/liveupdate/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="837">
-              <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -189,7 +188,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Pipfile.lock" />
         <option value="$PROJECT_DIR$/Procfile" />
-        <option value="$PROJECT_DIR$/liveproject/settings.py" />
         <option value="$PROJECT_DIR$/liveupdate/templates/new_link.html" />
         <option value="$PROJECT_DIR$/liveupdate/templates/login_page.html" />
         <option value="$PROJECT_DIR$/liveupdate/templates/base.html" />
@@ -199,6 +197,7 @@
         <option value="$PROJECT_DIR$/liveupdate/templates/message.html" />
         <option value="$PROJECT_DIR$/liveupdate/templates/all_links.html" />
         <option value="$PROJECT_DIR$/liveupdate/templates/about.html" />
+        <option value="$PROJECT_DIR$/liveproject/settings.py" />
       </list>
     </option>
   </component>
@@ -966,16 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="124" column="1" lean-forward="true" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
-          <folding>
-            <element signature="e#384#393#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1070,7 +1059,7 @@
     <entry file="file://$PROJECT_DIR$/liveupdate/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="837">
-          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1087,6 +1076,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liveproject/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="141" column="31" lean-forward="false" selection-start-line="141" selection-start-column="31" selection-end-line="141" selection-end-column="31" />
           <folding />
         </state>
       </provider>
